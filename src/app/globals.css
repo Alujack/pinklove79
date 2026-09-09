@@ -76,14 +76,21 @@
   --surface: #ffffff;
   --surface-ring: #ffe3ed;
   --surface-hover: #fffdfe;
+  --field: #fff4f8;
+  --field-ring: #ffd3e3;
   --band-edge: #ffdce9;
   --band-ink: var(--color-ink);
   --band-body: var(--color-ink-body);
   --band-soft: var(--color-ink-soft);
   --band-accent: var(--color-brand-700);
 
-  /* Comfortable measure for continuous prose — roughly 66 characters. */
-  --measure: 34rem;
+  /*
+   * Comfortable measure for continuous prose. Body copy is 22px from `sm`
+   * up, so this works out at roughly 65 characters a line — the old
+   * `max-w-3xl` was the same order of width, but it was being applied to
+   * 17px text, which is where the hundred-character lines came from.
+   */
+  --measure: 46rem;
 }
 
 .band-paper {
@@ -91,6 +98,8 @@
   --surface-ring: #ffd3e3;
   --surface-hover: #ffedf3;
   --band-edge: #ffe3ed;
+  --field: #ffffff;
+  --field-ring: #ffc9dd;
 }
 
 .band-sand {
@@ -98,6 +107,8 @@
   --surface-ring: #f3ddc8;
   --surface-hover: #ffffff;
   --band-edge: #f2dcc6;
+  --field: #fdf6ef;
+  --field-ring: #f0d8c0;
 }
 
 .band-deep {
@@ -137,17 +148,34 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Headings carry the darker ink; body copy stays on the softer one. */
-h1,
-h2,
-h3,
-h4 {
-  color: var(--color-ink);
-  text-wrap: balance;
-}
+/*
+ * Headings carry the darker ink; body copy stays on the softer one.
+ *
+ * These live in `@layer base` deliberately. Unlayered rules outrank
+ * everything inside a layer, so an element selector out here would beat
+ * every `text-*` utility Tailwind emits into `@layer utilities` — which
+ * would quietly break every heading that needs another colour, such as the
+ * white ones on the brand and plum bands.
+ */
+@layer base {
+  /*
+   * Reading the colour from the band token, not a fixed value: a base-layer
+   * rule beats an inherited colour, so a hardcoded ink here would turn every
+   * heading inside a brand or plum panel dark unless each one remembered to
+   * say `text-white`. Bands that flip to a dark ground flip `--band-ink`
+   * with it, and an explicit `text-*` utility still wins over both.
+   */
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--band-ink);
+    text-wrap: pretty;
+  }
 
-p {
-  text-wrap: pretty;
+  p {
+    text-wrap: pretty;
+  }
 }
 
 /* Khmer glyphs need a taller line box than the Latin body font */
@@ -220,11 +248,27 @@ p {
 }
 
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (min-height: 1px) {
     .reveal {
       animation: rise-in linear both;
       animation-timeline: view();
-      animation-range: entry 0% cover 12%;
+      /*
+       * Finish well before the element is fully on screen, so a section is
+       * solid by the time anyone is actually reading it.
+       */
+      animation-range: entry 0% entry 70%;
+    }
+  }
+
+  /*
+   * A view() range needs a viewport shorter than the document to advance. In
+   * print — and in the page-capture tools that lay the whole document out at
+   * once — it never does, so the animation is switched off rather than
+   * leaving a sheet of paper blank.
+   */
+  @media print {
+    .reveal {
+      animation: none;
     }
   }
 }

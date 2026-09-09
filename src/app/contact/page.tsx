@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { site, whatsappHref } from "@/lib/site";
 import { PageHero } from "@/components/page-hero";
 import { InquiryForm } from "@/components/inquiry-form";
-import { Icon, type IconName } from "@/components/icons";
+import { Icon } from "@/components/icons";
 import { Card, Chip, Prose, Section, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = {

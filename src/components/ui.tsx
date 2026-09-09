@@ -286,9 +286,11 @@ const buttonTones: Record<ButtonTone, string> = {
   primary:
     "bg-brand-600 text-white shadow-soft hover:bg-brand-700 hover:shadow-card active:bg-brand-800",
   // A white fill ringed in pale pink read as a disabled control on a pink
-  // page; a tinted fill with a stronger ring reads as the choice it is.
+  // page. Taking the fill from the band's own surface token means it is
+  // always a step away from whatever is behind it — white on a blush band,
+  // blush on a white one — and the stronger ring makes it a real choice.
   secondary:
-    "bg-brand-50 text-brand-700 ring-1 ring-brand-300 hover:bg-brand-100 hover:ring-brand-400",
+    "bg-[var(--surface)] text-brand-700 ring-1 ring-brand-300 hover:bg-brand-100 hover:ring-brand-400",
   ghost: "text-brand-700 hover:bg-brand-100",
   onBrand: "bg-white text-brand-700 shadow-soft hover:bg-brand-50",
 };
@@ -471,7 +473,7 @@ export function Pledge({
       className={cx(
         "relative overflow-hidden rounded-3xl px-6 py-8 sm:px-10 sm:py-10",
         tone === "brand"
-          ? "glow bg-brand-600 text-white shadow-lift"
+          ? "glow band-deep bg-brand-600 text-white shadow-lift"
           : "bg-[var(--surface)] ring-1 ring-[color:var(--surface-ring)] shadow-soft",
       )}
     >

@@ -88,7 +88,7 @@ export function SiteHeader() {
               onClick={() => setOpenFor(open ? null : pathname)}
               aria-expanded={open}
               aria-controls="mobile-nav"
-              className="rounded-full p-2.5 text-brand-700 transition-colors hover:bg-brand-100 xl:hidden"
+              className="rounded-full p-3 text-brand-700 transition-colors hover:bg-brand-100 xl:hidden"
             >
               <span className="sr-only">
                 {open ? "Close menu" : "Open menu"}
@@ -96,7 +96,7 @@ export function SiteHeader() {
               <svg
                 aria-hidden
                 viewBox="0 0 24 24"
-                className="h-5 w-5"
+                className="h-5.5 w-5.5"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"

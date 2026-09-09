@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { site, whatsappHref } from "@/lib/site";
+import { Icon } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
 import { InquiryForm } from "@/components/inquiry-form";
 import {
+  ArrowLink,
   ButtonLink,
   Card,
   Container,
@@ -112,13 +114,9 @@ export default function DonatePage() {
               <p className="mt-3 flex-1 leading-relaxed text-ink-body">
                 {item.body}
               </p>
-              <ButtonLink
-                href={item.href}
-                tone="ghost"
-                className="mt-4 -ml-3 self-start px-3 hover:bg-white/70 hover:text-brand-800"
-              >
-                About this project →
-              </ButtonLink>
+              <ArrowLink href={item.href} className="mt-4">
+                About this project
+              </ArrowLink>
             </Card>
           ))}
         </ul>
@@ -168,20 +166,16 @@ export default function DonatePage() {
       {/* ------------------------------------------------------ donate now -- */}
       <section id="give" className="py-16 sm:py-24">
         <Container>
-          <div className="relative overflow-hidden rounded-[2rem] bg-brand-600 px-7 py-12 text-white shadow-lift sm:px-14 sm:py-16">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -top-24 -right-16 h-72 w-72 rounded-full bg-brand-400/40 blur-3xl"
-            />
+          <div className="glow band-deep overflow-hidden rounded-3xl bg-brand-600 px-7 py-12 text-white shadow-lift sm:px-14 sm:py-16">
             <div className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
               <div>
                 <p className="text-xs font-bold tracking-[0.16em] uppercase text-brand-100">
-                  🙏 Thank you
+                  Thank you
                 </p>
                 <h2 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
                   Donate today
                 </h2>
-                <p className="mt-5 max-w-xl text-lg leading-relaxed text-brand-50">
+                <p className="mt-5 measure text-read leading-relaxed text-brand-50">
                   Whether you give a little or a lot, your kindness can become
                   part of a bigger story of hope, compassion and positive change
                   in Cambodia.
@@ -195,7 +189,7 @@ export default function DonatePage() {
                 </p>
               </div>
 
-              <div className="rounded-3xl bg-white/12 p-7 ring-1 ring-white/25 backdrop-blur-sm">
+              <div className="rounded-3xl bg-brand-800/45 p-7 ring-1 ring-white/25 backdrop-blur-sm">
                 {site.donateUrl ? (
                   <>
                     <h3 className="font-display text-2xl">
@@ -227,24 +221,29 @@ export default function DonatePage() {
                       {site.email ? (
                         <li>
                           <a
-                            className="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                            className="flex items-center gap-2 underline decoration-white/40 underline-offset-4 hover:decoration-white"
                             href={`mailto:${site.email}?subject=Donation%20to%20PinkLove79`}
                           >
-                            📧 {site.email}
+                            <Icon name="mail" className="h-4 w-4 shrink-0" />
+                            {site.email}
                           </a>
                         </li>
                       ) : null}
                       {site.phone ? (
                         <li>
                           <a
-                            className="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                            className="flex items-center gap-2 underline decoration-white/40 underline-offset-4 hover:decoration-white"
                             href={whatsappHref || `tel:${site.phone}`}
                           >
-                            📱 {site.phone}
+                            <Icon name="phone" className="h-4 w-4 shrink-0" />
+                            {site.phone}
                           </a>
                         </li>
                       ) : null}
-                      <li>📍 {site.address.short}</li>
+                      <li className="flex items-center gap-2">
+                        <Icon name="pin" className="h-4 w-4 shrink-0" />
+                        {site.address.short}
+                      </li>
                     </ul>
                     <ButtonLink
                       href="#donation-form"

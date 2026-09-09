@@ -23,7 +23,7 @@ function FooterLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="-mx-2 inline-block rounded-lg px-2 py-1.5 font-medium text-ink-body transition-colors hover:bg-brand-50 hover:text-brand-700"
+      className="-mx-2 inline-block rounded-lg px-2 py-2 font-medium text-ink-body transition-colors hover:bg-brand-50 hover:text-brand-700"
     >
       {label}
     </Link>
@@ -52,7 +52,7 @@ function ContactRow({
       {href ? (
         <a
           href={href}
-          className="-mx-2 flex items-start gap-2.5 rounded-lg px-2 py-1.5 font-medium text-ink-body transition-colors hover:bg-brand-50 hover:text-brand-700"
+          className="-mx-2 flex items-start gap-2.5 rounded-lg px-2 py-2 font-medium text-ink-body transition-colors hover:bg-brand-50 hover:text-brand-700"
         >
           {body}
         </a>
