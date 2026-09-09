@@ -1,0 +1,10 @@
+Generation mode: built-in imagegen
+Saved image: public/brand/pinklove79-icon.png
+
+Use case: logo-brand
+Asset type: finished square website icon image for PinkLove79, a community charity caring for children and families in Cambodia.
+Primary request: create one polished, memorable icon: a bold friendly pink heart containing an extremely simple white negative-space adult-and-child embrace. Two round heads, one larger and one smaller, above one flowing protective curved form. The outer heart silhouette must dominate and read clearly at small favicon sizes.
+Style/medium: crisp flat graphic logo artwork, smooth confident curves, balanced geometry, warm and compassionate, professional and uncluttered.
+Composition/framing: square 1024 by 1024 canvas; single large centered heart occupies about 80 percent of canvas width; generous even padding; straight-on artwork ready to use, not a presentation mockup.
+Color palette: rich rose pink #de2166 with subtle brighter pink #fb6da2 toward the upper heart; clean warm-white interior motif; solid pale blush #fff1f6 background.
+Constraints: one icon only. No text, no letters, no numerals, no wordmark, no tiny details, no outlines, no additional symbols, no shadows, no 3D, no photographic elements, no watermark.
