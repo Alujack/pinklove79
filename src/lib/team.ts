@@ -8,6 +8,22 @@ export type Person = {
   bio: string[];
   quote?: string;
   /**
+   * Portrait, served from `public/team/`. A string path rather than a static
+   * import so a missing file degrades to the initials avatar instead of
+   * failing the build.
+   *
+   * The files there are already cropped square on the face, because these
+   * are group photographs and snapshots rather than studio portraits — the
+   * faces sit well off centre, and cropping in the source rather than in CSS
+   * also keeps the black letterbox edge of one of them out of frame. `position`
+   * is for any future portrait that is not square.
+   */
+  photo?: {
+    src: string;
+    /** `object-position`, for a source that is not already square. */
+    position?: string;
+  };
+  /**
    * The source content left these as placeholders. Fill them in here and the
    * matching row appears on the Team page automatically; leave one blank and it
    * is simply omitted rather than shown as an empty field.
@@ -33,6 +49,7 @@ export const founders: Person[] = [
     ],
     quote:
       "When we care about someone, we can find a way to help — even from far away. Together, our kindness can travel across borders and bring hope where it is needed most.",
+    photo: { src: "/team/mei-lan-gee.jpg" },
     contact: { whatsapp: "", phone: "", email: "" },
   },
   {
@@ -48,6 +65,7 @@ export const founders: Person[] = [
     ],
     quote:
       "I believe we do not need to be rich to help others. We can begin with what we have, and together, small acts of kindness can change lives.",
+    photo: { src: "/team/samnang.jpg" },
     contact: { whatsapp: "", phone: "", email: "" },
   },
 ];
@@ -63,6 +81,7 @@ export const team: Person[] = [
       "Yoeun Yan supports PinkLove79 through administration and website development. He helps organize important information, maintain the website, and support the day-to-day administrative work of the organization.",
       "His work helps PinkLove79 communicate clearly with supporters, volunteers, partners, and people around the world.",
     ],
+    photo: { src: "/team/yoeun-yan.jpg" },
     contact: { whatsapp: "", phone: "", email: "" },
   },
   {
@@ -91,7 +110,7 @@ export const team: Person[] = [
   },
 ];
 
-/** Initials for the placeholder avatar, e.g. "Ms. Mei Lan Gee" → "ML". */
+/** Initials for the fallback avatar, e.g. "Ms. Mei Lan Gee" → "ML". */
 export function initials(name: string) {
   const words = name
     .replace(/^(Ms\.|Mr\.|Mrs\.|Dr\.)\s+/i, "")

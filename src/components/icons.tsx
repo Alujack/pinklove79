@@ -41,6 +41,16 @@ const paths = {
       strokeLinejoin="round"
     />
   ),
+  "chevron-right": (
+    <path
+      d="M9.75 6l5.5 6-5.5 6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
   mail: (
     <>
       <rect
@@ -119,6 +129,15 @@ const paths = {
   quote: (
     <path
       d="M9.3 5.5c-3.4 1.9-5.3 4.8-5.3 8.4 0 3 1.6 4.9 3.9 4.9 2 0 3.5-1.5 3.5-3.5 0-1.9-1.3-3.3-3.1-3.4.2-1.9 1.4-3.6 3.3-4.7zm10 0c-3.4 1.9-5.3 4.8-5.3 8.4 0 3 1.6 4.9 3.9 4.9 2 0 3.5-1.5 3.5-3.5 0-1.9-1.3-3.3-3.1-3.4.2-1.9 1.4-3.6 3.3-4.7z"
+      fill="currentColor"
+    />
+  ),
+  play: (
+    <path d="M8 5.4l11 6.6-11 6.6z" fill="currentColor" />
+  ),
+  pause: (
+    <path
+      d="M8.5 5.5h2.2v13H8.5zM13.3 5.5h2.2v13h-2.2z"
       fill="currentColor"
     />
   ),

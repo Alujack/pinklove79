@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
+import { MediaSlideshow } from "@/components/media-slideshow";
+import { childrenMedia } from "@/lib/children-media";
 import {
   ButtonLink,
   Card,
@@ -60,9 +62,19 @@ const changeSomething = [
 export default function ChildrenPage() {
   return (
     <>
+      {/*
+       * The pictures open the page, ahead of the title block. These are the
+       * children everything below is about, and a reader who meets them first
+       * reads the rest differently.
+       */}
+      <div className="mx-auto w-full max-w-4xl px-3 pt-3 sm:px-8 sm:pt-6">
+        <MediaSlideshow
+          items={childrenMedia}
+          label="Photographs and video from the 79 Children project"
+        />
+      </div>
+
       <PageHero
-        eyebrow="Project one"
-        khmer="គំរោង ចិញ្ចឹម ក្មេង 79 នាក់"
         title={
           <>
             79 children, 79 stories,{" "}

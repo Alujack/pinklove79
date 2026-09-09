@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
+import { MediaSlideshow } from "@/components/media-slideshow";
+import { churchMedia } from "@/lib/church-media";
 import {
   ButtonLink,
   Card,
@@ -55,9 +57,16 @@ const welcome = [
 export default function ChurchPage() {
   return (
     <>
+      {/* Same flow as the other two project pages: the place and the people
+          first, then the words. */}
+      <div className="mx-auto w-full max-w-4xl px-3 pt-3 sm:px-8 sm:pt-6">
+        <MediaSlideshow
+          items={churchMedia}
+          label="Photographs and video from the community church"
+        />
+      </div>
+
       <PageHero
-        eyebrow="Project three"
-        khmer="គំរោង ព្រះវិហារ ផ្តល់កន្លែង ដល់កុមារ និង មនុស្សគ្រប់រូប មកស្តាប់ មកសិក្សា ស្វែងយល់បន្ថែម អំពីព្រះយេស៊ូគ្រីស្ត."
         title={
           <>
             One church — a place to{" "}

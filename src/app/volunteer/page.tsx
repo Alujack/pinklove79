@@ -44,7 +44,6 @@ export default function VolunteerPage() {
   return (
     <>
       <PageHero
-        eyebrow="Volunteers needed"
         title={
           <>
             Your time can{" "}

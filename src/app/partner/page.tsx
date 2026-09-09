@@ -90,7 +90,6 @@ export default function PartnerPage() {
   return (
     <>
       <PageHero
-        eyebrow="Partner with us"
         title={
           <>
             Lasting change happens when we{" "}

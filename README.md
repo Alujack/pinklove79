@@ -25,9 +25,9 @@ npx tsc --noEmit     # typecheck
 | Route        | Content                                                          |
 | ------------ | ---------------------------------------------------------------- |
 | `/`          | Hero, the three projects, why we care, ways to help              |
-| `/children`  | គំរោង ចិញ្ចឹម ក្មេង 79 នាក់ — 79 children, 79 stories, one hope   |
-| `/villagers` | គំរោង ជួយអ្នកភូមិ 500 គ្រួសារ — lemongrass, business, skills, home |
-| `/church`    | គំរោង ព្រះវិហារ — a place to learn, grow and serve                |
+| `/children`  | 79 children — meals, school, clothing and healthcare             |
+| `/villagers` | 500 villagers — lemongrass, business, skills, home               |
+| `/church`    | One community church — a place to learn, grow and serve          |
 | `/team`      | Founders, team and specialists                                   |
 | `/volunteer` | Volunteering in Cambodia or from home, with an application form   |
 | `/partner`   | Who can partner, hotels, airlines, project areas, enquiry form    |

@@ -68,7 +68,6 @@ export default function DonatePage() {
   return (
     <>
       <PageHero
-        eyebrow="Make a donation"
         title={
           <>
             Your kindness can{" "}
