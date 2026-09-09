@@ -36,6 +36,7 @@ export const nav = [
   { href: "/children", label: "79 Children" },
   { href: "/villagers", label: "500 Villagers" },
   { href: "/church", label: "Our Church" },
+  { href: "/team", label: "Our Team" },
   { href: "/volunteer", label: "Volunteer" },
   { href: "/partner", label: "Partner" },
   { href: "/contact", label: "Contact" },
