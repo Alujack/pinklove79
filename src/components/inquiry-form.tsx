@@ -11,11 +11,15 @@ import { Button, Glyph } from "@/components/ui";
 /*
  * A fixed height rather than vertical padding, so a text input and a native
  * `<select>` — which pads itself differently — end up the same size when
- * they share a row. The fill is pushed a step away from the card behind it
- * so the field reads as somewhere you can type.
+ * they share a row.
+ *
+ * The fill comes from the band's `--field` token. A hardcoded white field
+ * inside a white card left the control defined by nothing but its ring; the
+ * token inverts against the card the same way the card inverts against the
+ * band, so a field always reads as somewhere you can type.
  */
 const fieldBase =
-  "block w-full rounded-2xl border-0 bg-white text-base text-ink ring-1 ring-brand-200 transition-shadow placeholder:text-ink-soft/55 focus:ring-2 focus:ring-brand-500";
+  "block w-full rounded-2xl border-0 bg-[var(--field)] text-base text-ink ring-1 ring-[color:var(--field-ring)] transition-shadow placeholder:text-ink-soft/60 focus:ring-2 focus:ring-brand-500";
 
 /** Single-line controls share a fixed height; the textarea sets its own. */
 const fieldClass = `${fieldBase} h-13 px-4`;
@@ -195,8 +199,8 @@ export function InquiryForm({
               ))}
             </select>
             <Icon
-              name="arrow-right"
-              className="pointer-events-none absolute inset-y-0 end-4 my-auto h-4 w-4 rotate-90 text-brand-500"
+              name="chevron-down"
+              className="pointer-events-none absolute inset-y-0 end-4 my-auto h-4 w-4 text-brand-500"
             />
           </div>
         </Field>

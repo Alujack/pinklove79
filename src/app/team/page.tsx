@@ -138,19 +138,21 @@ export default function TeamPage() {
                     </span>
                   </p>
 
-                  <div className="measure mt-6 space-y-4 text-read leading-relaxed text-ink-body">
+                  <div className="measure mt-6 space-y-4 text-read text-ink-body">
                     {person.bio.map((paragraph) => (
                       <p key={paragraph.slice(0, 40)}>{paragraph}</p>
                     ))}
                   </div>
 
+                  {/*
+                   * A left rule rather than a tinted panel: the panel fill sat
+                   * within a couple of percent of the card behind it on some
+                   * bands, and the decorative quote mark landed on top of the
+                   * first line of the quote itself.
+                   */}
                   {person.quote ? (
-                    <blockquote className="measure relative mt-7 rounded-2xl bg-brand-50 p-6 ring-1 ring-brand-100">
-                      <Icon
-                        name="quote"
-                        className="absolute top-3 right-4 h-10 w-10 text-brand-200"
-                      />
-                      <p className="relative font-display text-xl leading-snug text-ink sm:text-2xl">
+                    <blockquote className="measure mt-7 border-l-2 border-brand-300 pl-5 sm:pl-6">
+                      <p className="font-display text-xl leading-snug text-ink sm:text-2xl">
                         &ldquo;{person.quote}&rdquo;
                       </p>
                       <footer className="mt-3 text-sm font-bold text-brand-700">

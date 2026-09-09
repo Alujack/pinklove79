@@ -31,6 +31,16 @@ const paths = {
       strokeLinejoin="round"
     />
   ),
+  "chevron-down": (
+    <path
+      d="M6 9.75l6 5.5 6-5.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
   mail: (
     <>
       <rect
