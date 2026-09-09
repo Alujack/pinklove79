@@ -105,9 +105,9 @@ export default function TeamPage() {
 
       <Lead>
         <p>
-          Our founders come from two different countries and two very different
-          starting points. What they share is a belief that kindness does not
-          need permission, distance, or wealth to begin.
+          Our founders began in different countries and from different
+          circumstances. What they share is a belief that helping others does
+          not have to wait for distance to close or for wealth to arrive.
         </p>
       </Lead>
 
@@ -116,7 +116,7 @@ export default function TeamPage() {
         <SectionHeading
           emoji="🤝"
           title="Our founders"
-          lead="Two people, one purpose — and a friendship across 13,000 kilometres."
+          lead="Two countries, two very different starting points, one shared purpose."
         />
         <div className="mt-12 space-y-8">
           {founders.map((person) => (
