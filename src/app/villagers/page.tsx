@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
+import { MediaSlideshow } from "@/components/media-slideshow";
+import { familyMedia } from "@/lib/family-media";
 import {
   ButtonLink,
   Card,
@@ -75,9 +77,15 @@ const pathForward = [
 export default function VillagersPage() {
   return (
     <>
+      {/* Same flow as the 79 Children page: the people first, then the words. */}
+      <div className="mx-auto w-full max-w-4xl px-3 pt-3 sm:px-8 sm:pt-6">
+        <MediaSlideshow
+          items={familyMedia}
+          label="Photographs from the 500 Villagers & Families project"
+        />
+      </div>
+
       <PageHero
-        eyebrow="Project two"
-        khmer="គំរោង ជួយអ្នកភូមិ 500 គ្រួសារ"
         title={
           <>
             Supporting 500 villagers{" "}

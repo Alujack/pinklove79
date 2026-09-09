@@ -87,21 +87,6 @@ export function Section({
 
 /* ------------------------------------------------------------ typography -- */
 
-export function Eyebrow({
-  children,
-  icon,
-}: {
-  children: ReactNode;
-  icon?: IconName;
-}) {
-  return (
-    <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold tracking-[0.12em] text-brand-700 uppercase">
-      {icon ? <Icon name={icon} className="h-3.5 w-3.5" /> : null}
-      {children}
-    </p>
-  );
-}
-
 /**
  * A soft tinted tile holding one glyph.
  *
@@ -151,7 +136,6 @@ export function Glyph({
 export function SectionHeading({
   emoji,
   icon,
-  eyebrow,
   title,
   lead,
   align = "left",
@@ -159,7 +143,6 @@ export function SectionHeading({
 }: {
   emoji?: string;
   icon?: IconName;
-  eyebrow?: string;
   title: string;
   lead?: string;
   align?: "left" | "center";
@@ -179,11 +162,6 @@ export function SectionHeading({
       className={cx("max-w-2xl", centered && "mx-auto text-center", className)}
     >
       {mark}
-      {eyebrow ? (
-        <p className="mb-3 text-xs font-bold tracking-[0.14em] text-[color:var(--band-accent)] uppercase">
-          {eyebrow}
-        </p>
-      ) : null}
       <h2 className="font-display text-3xl leading-[1.15] text-[color:var(--band-ink)] sm:text-4xl">
         {title}
       </h2>
@@ -382,16 +360,20 @@ export function Card({
   className,
   as: Tag = "div",
   interactive = false,
+  padding = "default",
 }: {
   children: ReactNode;
   className?: string;
   as?: "div" | "li" | "article";
   interactive?: boolean;
+  /** `none` for cards that carry a full-bleed image to their own edges. */
+  padding?: "default" | "none";
 }) {
   return (
     <Tag
       className={cx(
-        "rounded-3xl bg-[var(--surface)] p-6 ring-1 ring-[color:var(--surface-ring)] shadow-soft sm:p-7",
+        "rounded-3xl bg-[var(--surface)] ring-1 ring-[color:var(--surface-ring)] shadow-soft",
+        padding === "default" && "p-6 sm:p-7",
         interactive &&
           "transition-[box-shadow,translate,background-color] hover:-translate-y-0.5 hover:bg-[var(--surface-hover)] hover:shadow-lift",
         className,

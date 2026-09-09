@@ -61,10 +61,7 @@ export default function HomePage() {
         <Container className="py-14 sm:py-20 lg:py-24">
           <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
             <div>
-              <p className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3.5 py-1.5 text-xs font-bold tracking-[0.12em] text-brand-700 uppercase ring-1 ring-brand-200">
-                Takeo Province, Cambodia
-              </p>
-              <h1 className="mt-6 font-display text-[clamp(2.5rem,1.4rem+4vw,4.25rem)] leading-[1.04] text-ink">
+              <h1 className="font-display text-[clamp(2.5rem,1.4rem+4vw,4.25rem)] leading-[1.04] text-ink">
                 79 children.
                 <br />
                 <span className="text-brand-600">79 stories.</span>
@@ -98,14 +95,9 @@ export default function HomePage() {
                       href={project.href}
                       className="group -mx-2 flex items-center gap-4 rounded-2xl p-2 transition-colors hover:bg-brand-50"
                     >
-                      <Glyph size="lg">{project.emoji}</Glyph>
-                      <span className="min-w-0">
-                        <span className="block font-bold text-ink group-hover:text-brand-700">
-                          {project.title}
-                        </span>
-                        <span className="khmer mt-0.5 block text-sm text-ink-soft">
-                          {project.khmer}
-                        </span>
+                      <Glyph>{project.emoji}</Glyph>
+                      <span className="min-w-0 font-bold text-ink group-hover:text-brand-700">
+                        {project.title}
                       </span>
                       <Icon
                         name="arrow-right"

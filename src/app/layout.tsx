@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Manrope, Noto_Sans_Khmer } from "next/font/google";
+import { DM_Serif_Display, Manrope } from "next/font/google";
 import { site } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -16,13 +16,6 @@ const dmSerif = DM_Serif_Display({
   variable: "--font-dm-serif",
   subsets: ["latin"],
   weight: "400",
-  display: "swap",
-});
-
-const khmer = Noto_Sans_Khmer({
-  variable: "--font-khmer",
-  subsets: ["khmer"],
-  weight: ["400", "600", "700"],
   display: "swap",
 });
 
@@ -62,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       // tells Next the smooth scroll in globals.css is intentional
       data-scroll-behavior="smooth"
-      className={`${manrope.variable} ${dmSerif.variable} ${khmer.variable} h-full antialiased`}
+      className={`${manrope.variable} ${dmSerif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <a

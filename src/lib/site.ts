@@ -55,7 +55,6 @@ export const nav = [
 export type Project = {
   href: string;
   emoji: string;
-  khmer: string;
   title: string;
   kicker: string;
   blurb: string;
@@ -66,7 +65,6 @@ export const projects: Project[] = [
   {
     href: "/children",
     emoji: "👧",
-    khmer: "គំរោង ចិញ្ចឹម ក្មេង 79 នាក់",
     title: "79 Children",
     kicker: "79 children, 79 stories, one hope",
     blurb:
@@ -76,7 +74,6 @@ export const projects: Project[] = [
   {
     href: "/villagers",
     emoji: "🌾",
-    khmer: "គំរោង ជួយអ្នកភូមិ 500 គ្រួសារ",
     title: "500 Villagers & Families",
     kicker: "From assistance to opportunity",
     blurb:
@@ -91,8 +88,6 @@ export const projects: Project[] = [
   {
     href: "/church",
     emoji: "⛪",
-    khmer:
-      "គំរោង ព្រះវិហារ ផ្តល់កន្លែង ដល់កុមារ និង មនុស្សគ្រប់រូប មកស្តាប់ មកសិក្សា ស្វែងយល់បន្ថែម អំពីព្រះយេស៊ូគ្រីស្ត.",
     title: "One Community Church",
     kicker: "A place to learn, grow and serve",
     blurb:
