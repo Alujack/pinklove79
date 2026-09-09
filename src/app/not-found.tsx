@@ -9,7 +9,7 @@ export default function NotFound() {
       <h1 className="mt-6 font-display text-4xl text-ink sm:text-5xl">
         We couldn&apos;t find that page
       </h1>
-      <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
+      <p className="mx-auto mt-5 max-w-xl text-read leading-relaxed text-ink-body">
         The page you were looking for may have moved. Let&apos;s get you back to
         the children, families and communities we serve.
       </p>

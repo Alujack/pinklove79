@@ -107,7 +107,7 @@ export default function VillagersPage() {
         </p>
       </Lead>
 
-      <Section tone="white" className="border-y border-brand-100">
+      <Section tone="paper">
         <SectionHeading
           emoji="🌱"
           title="Lemongrass farming & small agriculture"
@@ -116,7 +116,7 @@ export default function VillagersPage() {
         <div className="mt-10">
           <IconGrid items={farmingSupport} columns={2} />
         </div>
-        <p className="mt-9 max-w-3xl font-display text-2xl leading-snug text-brand-700">
+        <p className="mt-9 measure font-display text-2xl leading-snug text-brand-700">
           Our goal is to help families grow, sell, earn, and gradually become
           more self-reliant.
         </p>
@@ -153,7 +153,7 @@ export default function VillagersPage() {
         </Prose>
       </Section>
 
-      <Section tone="sand" className="border-y border-brand-100">
+      <Section tone="sand">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeading
@@ -169,7 +169,7 @@ export default function VillagersPage() {
               </p>
             </Prose>
             <Verses className="mt-7" lines={skills} />
-            <p className="mt-8 max-w-2xl font-bold text-lg text-ink">
+            <p className="mt-8 measure text-read font-bold text-ink">
               Our hope is that a person who learns a skill today can use that
               skill to support their family for many years.
             </p>
@@ -189,7 +189,7 @@ export default function VillagersPage() {
             <div className="mt-7">
               <IconGrid items={household} columns={2} />
             </div>
-            <p className="mt-8 leading-relaxed text-ink-soft">
+            <p className="mt-8 leading-relaxed text-ink-body">
               These may be simple things, but for families with very limited
               resources, they can make everyday life safer, healthier and more
               comfortable.
@@ -219,7 +219,7 @@ export default function VillagersPage() {
         </Prose>
       </Section>
 
-      <Section tone="white" className="border-y border-brand-100">
+      <Section tone="paper">
         <SectionHeading
           emoji="🌍"
           title="Our vision for 500 villagers"

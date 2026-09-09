@@ -3,12 +3,8 @@ import Link from "next/link";
 import { founders, initials, team, type Person } from "@/lib/team";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
-import {
-  Card,
-  Lead,
-  Section,
-  SectionHeading,
-} from "@/components/ui";
+import { Icon, type IconName } from "@/components/icons";
+import { Card, Lead, Section, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Meet Our Founders & Team",
@@ -35,20 +31,25 @@ function ContactRows({ person }: { person: Person }) {
   const { whatsapp, phone, email } = person.contact;
   const rows = [
     whatsapp && {
-      icon: "📱",
+      icon: "phone",
       label: "WhatsApp",
       value: whatsapp,
       href: `https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`,
     },
-    phone && { icon: "☎️", label: "Phone", value: phone, href: `tel:${phone}` },
+    phone && {
+      icon: "phone",
+      label: "Phone",
+      value: phone,
+      href: `tel:${phone}`,
+    },
     email && {
-      icon: "📧",
+      icon: "mail",
       label: "Email",
       value: email,
       href: `mailto:${email}`,
     },
   ].filter(Boolean) as Array<{
-    icon: string;
+    icon: IconName;
     label: string;
     value: string;
     href: string;
@@ -75,11 +76,9 @@ function ContactRows({ person }: { person: Person }) {
         <li key={row.label}>
           <a
             href={row.href}
-            className="font-semibold text-ink-soft transition-colors hover:text-brand-700"
+            className="flex items-center gap-2 font-semibold text-ink-soft transition-colors hover:text-brand-700"
           >
-            <span aria-hidden className="mr-1.5">
-              {row.icon}
-            </span>
+            <Icon name={row.icon} className="h-4 w-4 shrink-0 text-brand-500" />
             <span className="sr-only">{row.label}: </span>
             {row.value}
           </a>
@@ -96,8 +95,7 @@ export default function TeamPage() {
         eyebrow="Our people"
         title={
           <>
-            Meet our founders{" "}
-            <span className="text-brand-600">&amp; team</span>
+            Meet our founders <span className="text-brand-600">&amp; team</span>
           </>
         }
         lead="PinkLove79 is the work of people in Cambodia and around the world who share one heart — to care, encourage, and create opportunities for others."
@@ -112,7 +110,7 @@ export default function TeamPage() {
       </Lead>
 
       {/* -------------------------------------------------------- founders -- */}
-      <Section tone="white" className="border-y border-brand-100">
+      <Section tone="paper">
         <SectionHeading
           emoji="🤝"
           title="Our founders"
@@ -140,15 +138,19 @@ export default function TeamPage() {
                     </span>
                   </p>
 
-                  <div className="mt-6 max-w-3xl space-y-4 leading-relaxed text-ink-soft">
+                  <div className="measure mt-6 space-y-4 text-read leading-relaxed text-ink-body">
                     {person.bio.map((paragraph) => (
                       <p key={paragraph.slice(0, 40)}>{paragraph}</p>
                     ))}
                   </div>
 
                   {person.quote ? (
-                    <blockquote className="mt-7 max-w-3xl border-l-4 border-brand-300 pl-5">
-                      <p className="font-display text-xl leading-snug text-ink sm:text-2xl">
+                    <blockquote className="measure relative mt-7 rounded-2xl bg-brand-50 p-6 ring-1 ring-brand-100">
+                      <Icon
+                        name="quote"
+                        className="absolute top-3 right-4 h-10 w-10 text-brand-200"
+                      />
+                      <p className="relative font-display text-xl leading-snug text-ink sm:text-2xl">
                         &ldquo;{person.quote}&rdquo;
                       </p>
                       <footer className="mt-3 text-sm font-bold text-brand-700">
@@ -190,7 +192,7 @@ export default function TeamPage() {
                 </span>
                 {person.country}
               </p>
-              <div className="mt-5 flex-1 space-y-4 leading-relaxed text-ink-soft">
+              <div className="mt-5 flex-1 space-y-4 leading-relaxed text-ink-body">
                 {person.bio.map((paragraph) => (
                   <p key={paragraph.slice(0, 40)}>{paragraph}</p>
                 ))}

@@ -1,7 +1,18 @@
 import type { ReactNode } from "react";
 import { Container } from "@/components/ui";
 
-/** Shared hero for the inner pages: soft pink band, eyebrow, title, lead. */
+/**
+ * Shared hero for the inner pages.
+ *
+ * The gradient used to fade from pink to transparent, which let the page
+ * colour show through and made the hero blur into the first section. It now
+ * sits on its own flat blush ground with a hairline at the bottom, so a
+ * reader can see where the page's title block ends and its content begins.
+ *
+ * The Khmer line moved *above* the eyebrow into the position of a standfirst,
+ * where it reads as the project's own name rather than as a caption that
+ * arrived before its heading.
+ */
 export function PageHero({
   eyebrow,
   khmer,
@@ -16,28 +27,24 @@ export function PageHero({
   actions?: ReactNode;
 }) {
   return (
-    <div className="relative overflow-hidden border-b border-brand-100 bg-gradient-to-b from-brand-100/80 via-brand-50/50 to-transparent">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-brand-200/45 blur-3xl"
-      />
-      <Container className="relative py-16 sm:py-24">
-        <p className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase ring-1 ring-brand-200">
+    <div className="glow overflow-hidden border-b border-brand-200/70 bg-brand-50">
+      <Container className="py-14 sm:py-20">
+        <p className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3.5 py-1.5 text-xs font-bold tracking-[0.12em] text-brand-700 uppercase ring-1 ring-brand-200">
           {eyebrow}
         </p>
+        <h1 className="mt-5 max-w-3xl font-display text-[clamp(2.25rem,1.4rem+3.2vw,3.75rem)] leading-[1.06] text-ink">
+          {title}
+        </h1>
+        <p className="mt-6 measure text-read text-ink-body sm:text-read-lg">
+          {lead}
+        </p>
         {khmer ? (
-          <p className="khmer mt-6 max-w-3xl text-lg font-semibold text-brand-700">
+          <p className="khmer mt-6 max-w-2xl border-l-2 border-brand-300 pl-4 text-base font-semibold text-brand-700">
             {khmer}
           </p>
         ) : null}
-        <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.1] text-ink sm:text-5xl lg:text-6xl">
-          {title}
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
-          {lead}
-        </p>
         {actions ? (
-          <div className="mt-9 flex flex-wrap gap-3">{actions}</div>
+          <div className="mt-8 flex flex-wrap gap-3">{actions}</div>
         ) : null}
       </Container>
     </div>
