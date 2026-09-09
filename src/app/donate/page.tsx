@@ -6,6 +6,7 @@ import {
   ButtonLink,
   Card,
   Container,
+  Glyph,
   Lead,
   Prose,
   Section,
@@ -76,13 +77,13 @@ export default function DonatePage() {
         actions={
           site.donateUrl ? (
             <>
-              <ButtonLink href={site.donateUrl}>Donate today ❤️</ButtonLink>
+              <ButtonLink href={site.donateUrl}>Donate today</ButtonLink>
               <ButtonLink href="#other-ways" tone="secondary">
                 Other ways to give
               </ButtonLink>
             </>
           ) : (
-            <ButtonLink href="#give">Start your donation ❤️</ButtonLink>
+            <ButtonLink href="#give">Start your donation</ButtonLink>
           )
         }
       />
@@ -95,7 +96,7 @@ export default function DonatePage() {
         </p>
       </Lead>
 
-      <Section tone="white" className="border-y border-brand-100">
+      <Section tone="paper">
         <SectionHeading
           emoji="❤️"
           title="Where your donation can help"
@@ -104,19 +105,17 @@ export default function DonatePage() {
         <ul className="mt-10 grid gap-6 md:grid-cols-2">
           {destinations.map((item) => (
             <Card as="li" key={item.title} className="flex flex-col">
-              <span aria-hidden className="text-3xl">
-                {item.emoji}
-              </span>
+              <Glyph size="lg">{item.emoji}</Glyph>
               <h3 className="mt-4 font-display text-2xl text-ink">
                 {item.title}
               </h3>
-              <p className="mt-3 flex-1 leading-relaxed text-ink-soft">
+              <p className="mt-3 flex-1 leading-relaxed text-ink-body">
                 {item.body}
               </p>
               <ButtonLink
                 href={item.href}
                 tone="ghost"
-                className="mt-5 self-start px-0 hover:bg-transparent hover:text-brand-800"
+                className="mt-4 -ml-3 self-start px-3 hover:bg-white/70 hover:text-brand-800"
               >
                 About this project →
               </ButtonLink>
@@ -134,7 +133,7 @@ export default function DonatePage() {
               lead="You can choose to make:"
             />
             <Verses className="mt-7" lines={giftTypes} />
-            <p className="mt-8 leading-relaxed text-ink-soft">
+            <p className="mt-8 leading-relaxed text-ink-body">
               You can also help by organizing a fundraising campaign with your
               family, friends, church, school, company or local community.
             </p>
@@ -180,7 +179,7 @@ export default function DonatePage() {
                   🙏 Thank you
                 </p>
                 <h2 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
-                  Donate today ❤️
+                  Donate today
                 </h2>
                 <p className="mt-5 max-w-xl text-lg leading-relaxed text-brand-50">
                   Whether you give a little or a lot, your kindness can become

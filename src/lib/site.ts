@@ -31,15 +31,25 @@ export const whatsappHref = site.phone
   ? `https://wa.me/${site.phone.replace(/[^0-9]/g, "")}`
   : "";
 
+/**
+ * `label` is used wherever the pages are listed as a menu (the mobile menu,
+ * the footer); `short` is the desktop bar, where nine items at this type size
+ * need the tighter wording to stay on one line.
+ *
+ * Home stays first for the desktop bar, and both menus list `nav.slice(1)` —
+ * the wordmark is already the way home, so a "Home" row would only push the
+ * eight pages that matter further down the screen.
+ */
 export const nav = [
-  { href: "/", label: "Home" },
-  { href: "/children", label: "79 Children" },
-  { href: "/villagers", label: "500 Villagers" },
-  { href: "/church", label: "Our Church" },
-  { href: "/team", label: "Our Team" },
-  { href: "/volunteer", label: "Volunteer" },
-  { href: "/partner", label: "Partner" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "Home", short: "Home" },
+  { href: "/team", label: "Our Founders", short: "Founders" },
+  { href: "/children", label: "Help 79 Children", short: "Children" },
+  { href: "/villagers", label: "Help 500 Villagers", short: "Villagers" },
+  { href: "/church", label: "Our Church", short: "Church" },
+  { href: "/volunteer", label: "Volunteers", short: "Volunteer" },
+  { href: "/partner", label: "Partners With Us", short: "Partner" },
+  { href: "/donate", label: "Donation", short: "Donate" },
+  { href: "/contact", label: "Contact Us", short: "Contact" },
 ] as const;
 
 export type Project = {

@@ -72,7 +72,7 @@ export default function VolunteerPage() {
         </p>
       </Lead>
 
-      <Section tone="white" className="border-y border-brand-100">
+      <Section tone="paper">
         <SectionHeading
           emoji="🤝"
           title="Volunteer with us in Cambodia"
@@ -81,7 +81,7 @@ export default function VolunteerPage() {
         <div className="mt-10">
           <IconGrid items={inCambodia} columns={3} />
         </div>
-        <p className="mt-9 max-w-3xl text-lg leading-relaxed text-ink-soft">
+        <p className="mt-9 measure text-read leading-relaxed text-ink-body">
           Our goal is to create meaningful experiences where volunteers can
           share their skills while learning from the local community.
         </p>
@@ -102,7 +102,7 @@ export default function VolunteerPage() {
               </p>
             </Prose>
             <Verses className="mt-7" lines={fromHome} />
-            <p className="mt-8 font-bold text-lg text-ink">
+            <p className="mt-8 measure text-read font-bold text-ink">
               Every volunteer can choose what they are comfortable doing.
             </p>
           </div>
@@ -133,7 +133,7 @@ export default function VolunteerPage() {
         </div>
       </Section>
 
-      <Section id="apply" tone="sand" className="border-y border-brand-100">
+      <Section id="apply" tone="sand">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
             <SectionHeading

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { site, whatsappHref } from "@/lib/site";
 import { PageHero } from "@/components/page-hero";
 import { InquiryForm } from "@/components/inquiry-form";
-import { Card, Prose, Section, SectionHeading } from "@/components/ui";
+import { Icon, type IconName } from "@/components/icons";
+import { Card, Chip, Prose, Section, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -40,22 +41,22 @@ export default function ContactPage() {
               lead="Whether you are interested in donating, volunteering, fundraising, visiting our projects, or becoming a partner, please contact us."
             />
 
-            <ul className="mt-8 flex flex-wrap gap-2">
+            {/* Quiet metadata: these are things you can write to us about,
+                not buttons, so they should not be shaped like buttons. */}
+            <ul className="mt-8 flex flex-wrap gap-1.5">
               {reasons.map((reason) => (
-                <li
-                  key={reason}
-                  className="rounded-full bg-brand-100 px-4 py-2 text-sm font-bold text-brand-700"
-                >
-                  {reason}
+                <li key={reason}>
+                  <Chip>{reason}</Chip>
                 </li>
               ))}
             </ul>
 
             <Card className="mt-9">
-              <dl className="space-y-6">
-                <div>
-                  <dt className="text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
-                    📍 Address
+              <dl className="divide-y divide-brand-100">
+                <div className="py-5 first:pt-0 last:pb-0">
+                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+                    <Icon name="pin" className="h-4 w-4" />
+                    Address
                   </dt>
                   <dd className="mt-2">
                     <address className="space-y-1 leading-relaxed text-ink not-italic">
@@ -66,9 +67,10 @@ export default function ContactPage() {
                   </dd>
                 </div>
 
-                <div>
-                  <dt className="text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
-                    📧 Email
+                <div className="py-5 first:pt-0 last:pb-0">
+                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+                    <Icon name="mail" className="h-4 w-4" />
+                    Email
                   </dt>
                   <dd className="mt-2 leading-relaxed text-ink">
                     {site.email ? (
@@ -87,9 +89,10 @@ export default function ContactPage() {
                   </dd>
                 </div>
 
-                <div>
-                  <dt className="text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
-                    📱 Phone / WhatsApp
+                <div className="py-5 first:pt-0 last:pb-0">
+                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+                    <Icon name="phone" className="h-4 w-4" />
+                    Phone / WhatsApp
                   </dt>
                   <dd className="mt-2 leading-relaxed text-ink">
                     {site.phone ? (
@@ -107,9 +110,10 @@ export default function ContactPage() {
                   </dd>
                 </div>
 
-                <div>
-                  <dt className="text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
-                    🌐 Website
+                <div className="py-5 first:pt-0 last:pb-0">
+                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+                    <Icon name="globe" className="h-4 w-4" />
+                    Website
                   </dt>
                   <dd className="mt-2 font-semibold text-ink">
                     {site.websiteLabel}

@@ -3,6 +3,7 @@ import { DM_Serif_Display, Manrope, Noto_Sans_Khmer } from "next/font/google";
 import { site } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { GoogleTranslate } from "@/components/google-translate";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -59,6 +60,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      // tells Next the smooth scroll in globals.css is intentional
+      data-scroll-behavior="smooth"
       className={`${manrope.variable} ${dmSerif.variable} ${khmer.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
@@ -73,6 +76,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <SiteFooter />
+        <GoogleTranslate />
       </body>
     </html>
   );

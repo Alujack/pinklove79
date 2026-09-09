@@ -107,7 +107,7 @@ export default function ChildrenPage() {
         </div>
       </Section>
 
-      <Section tone="white" className="border-y border-brand-100">
+      <Section tone="paper">
         <SectionHeading
           emoji="🤲"
           title="That is why we support these 79 children"
@@ -140,7 +140,7 @@ export default function ChildrenPage() {
               We cannot change everything in their lives, but together, we can
               change something.
             </p>
-            <ul className="mt-7 space-y-4 text-lg leading-relaxed text-ink-soft">
+            <ul className="mt-7 space-y-4 text-lg leading-relaxed text-ink-body">
               {changeSomething.map((line) => (
                 <li key={line}>{line}</li>
               ))}
@@ -149,7 +149,7 @@ export default function ChildrenPage() {
         </div>
       </Section>
 
-      <Section tone="sand" className="border-y border-brand-100">
+      <Section tone="sand">
         <SectionHeading
           emoji="🌱"
           title="Building a better future"
@@ -183,7 +183,7 @@ export default function ChildrenPage() {
       <CtaBand
         title="Help us keep 79 promises"
         lead="A gift toward meals, school supplies or healthcare reaches a child by name — not a number."
-        primary={{ href: "/donate", label: "Donate today ❤️" }}
+        primary={{ href: "/donate", label: "Donate today" }}
         secondary={{ href: "/partner", label: "Partner with us" }}
       />
     </>

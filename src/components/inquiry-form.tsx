@@ -1,13 +1,43 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitInquiry } from "@/app/actions";
 import { emptyInquiryState, inquiryTopics } from "@/lib/inquiry";
-import { Button } from "@/components/ui";
+import { Icon } from "@/components/icons";
+import { Button, Glyph } from "@/components/ui";
 
-const fieldClass =
-  "w-full rounded-2xl border-0 bg-white px-4 py-3 text-base text-ink ring-1 ring-brand-200 transition-shadow placeholder:text-ink-soft/55 focus:ring-2 focus:ring-brand-500";
+/*
+ * A fixed height rather than vertical padding, so a text input and a native
+ * `<select>` — which pads itself differently — end up the same size when
+ * they share a row. The fill is pushed a step away from the card behind it
+ * so the field reads as somewhere you can type.
+ */
+const fieldBase =
+  "block w-full rounded-2xl border-0 bg-white text-base text-ink ring-1 ring-brand-200 transition-shadow placeholder:text-ink-soft/55 focus:ring-2 focus:ring-brand-500";
+
+/** Single-line controls share a fixed height; the textarea sets its own. */
+const fieldClass = `${fieldBase} h-13 px-4`;
+const areaClass = `${fieldBase} resize-y p-4 leading-relaxed`;
+
+/*
+ * Fields are laid out in a two-column grid, and a label that wraps to two
+ * lines used to push its own input half a line below its neighbour's —
+ * "Where are you from? (optional)" against "I would like to talk about" was
+ * visibly out of step. Each field is now a column-flex box whose label grows
+ * to absorb the slack, so the inputs sit on the bottom edge of the row and
+ * line up however long the labels are.
+ */
+function Field({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return <div className={`flex flex-col ${className ?? ""}`}>{children}</div>;
+}
 
 function Label({
   htmlFor,
@@ -19,10 +49,13 @@ function Label({
   optional?: boolean;
 }) {
   return (
-    <label htmlFor={htmlFor} className="mb-2 block text-sm font-bold text-ink">
+    <label
+      htmlFor={htmlFor}
+      className="mb-2 flex grow flex-wrap items-baseline gap-x-1.5 text-sm leading-snug font-bold text-ink"
+    >
       {children}
       {optional ? (
-        <span className="ml-1.5 font-medium text-ink-soft">(optional)</span>
+        <span className="font-medium text-ink-soft">(optional)</span>
       ) : null}
     </label>
   );
@@ -63,11 +96,9 @@ export function InquiryForm({
         role="status"
         className="rounded-3xl bg-[var(--surface)] p-8 ring-1 ring-[color:var(--surface-ring)] shadow-soft"
       >
-        <p className="text-4xl" aria-hidden>
-          🙏
-        </p>
-        <h3 className="mt-4 font-display text-2xl text-ink">Thank you!</h3>
-        <p className="mt-3 text-lg leading-relaxed text-ink-soft">
+        <Glyph size="lg">🙏</Glyph>
+        <h3 className="mt-5 font-display text-2xl text-ink">Thank you!</h3>
+        <p className="mt-3 text-read text-ink-body sm:text-read-lg">
           {state.message}
         </p>
       </div>
@@ -90,7 +121,7 @@ export function InquiryForm({
       ) : null}
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <div>
+        <Field>
           <Label htmlFor="name">Your name</Label>
           <input
             id="name"
@@ -105,9 +136,9 @@ export function InquiryForm({
             placeholder="e.g. Sophea Chan"
           />
           <FieldError id="name-error" message={state.errors.name} />
-        </div>
+        </Field>
 
-        <div>
+        <Field>
           <Label htmlFor="email">Email address</Label>
           <input
             id="email"
@@ -122,9 +153,9 @@ export function InquiryForm({
             placeholder="you@example.com"
           />
           <FieldError id="email-error" message={state.errors.email} />
-        </div>
+        </Field>
 
-        <div>
+        <Field>
           <Label htmlFor="country" optional>
             Where are you from?
           </Label>
@@ -138,28 +169,40 @@ export function InquiryForm({
             placeholder="Country or city"
           />
           <FieldError id="country-error" message={state.errors.country} />
-        </div>
+        </Field>
 
-        <div>
+        <Field>
           <Label htmlFor="topic">I would like to talk about</Label>
-          <select
-            id="topic"
-            name="topic"
-            defaultValue={
-              state.values.topic ?? defaultTopic ?? inquiryTopics[6]
-            }
-            className={fieldClass}
-          >
-            {inquiryTopics.map((topic) => (
-              <option key={topic} value={topic}>
-                {topic}
-              </option>
-            ))}
-          </select>
-        </div>
+          {/*
+           * The native arrow is drawn at the platform's own size and colour,
+           * which made the select the one control on the form that did not
+           * look like it belonged. Ours is positioned in the padding the
+           * field reserves for it on the end side.
+           */}
+          <div className="relative">
+            <select
+              id="topic"
+              name="topic"
+              defaultValue={
+                state.values.topic ?? defaultTopic ?? inquiryTopics[6]
+              }
+              className={`${fieldClass} cursor-pointer appearance-none pe-11`}
+            >
+              {inquiryTopics.map((topic) => (
+                <option key={topic} value={topic}>
+                  {topic}
+                </option>
+              ))}
+            </select>
+            <Icon
+              name="arrow-right"
+              className="pointer-events-none absolute inset-y-0 end-4 my-auto h-4 w-4 rotate-90 text-brand-500"
+            />
+          </div>
+        </Field>
 
         {showOrganization ? (
-          <div className="sm:col-span-2">
+          <Field className="sm:col-span-2">
             <Label htmlFor="organization" optional>
               Organization
             </Label>
@@ -176,10 +219,10 @@ export function InquiryForm({
               id="organization-error"
               message={state.errors.organization}
             />
-          </div>
+          </Field>
         ) : null}
 
-        <div className="sm:col-span-2">
+        <Field className="sm:col-span-2">
           <Label htmlFor="message">Your message</Label>
           <textarea
             id="message"
@@ -191,11 +234,11 @@ export function InquiryForm({
             aria-describedby={
               state.errors.message ? "message-error" : undefined
             }
-            className={`${fieldClass} resize-y`}
+            className={areaClass}
             placeholder="Tell us a little about yourself and how you would like to help."
           />
           <FieldError id="message-error" message={state.errors.message} />
-        </div>
+        </Field>
       </div>
 
       {/* Honeypot — hidden from people, tempting to bots. */}

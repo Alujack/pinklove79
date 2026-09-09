@@ -4,6 +4,7 @@ import { InquiryForm } from "@/components/inquiry-form";
 import {
   ButtonLink,
   Card,
+  Glyph,
   IconGrid,
   Lead,
   Pledge,
@@ -117,7 +118,7 @@ export default function PartnerPage() {
         </p>
       </Lead>
 
-      <Section tone="white" className="border-y border-brand-100">
+      <Section tone="paper">
         <SectionHeading
           emoji="🤝"
           title="Who can partner with us?"
@@ -137,7 +138,7 @@ export default function PartnerPage() {
               lead="Hotels and resorts can support our projects in many meaningful ways, including:"
             />
             <Verses className="mt-7" lines={hotelWays} />
-            <p className="mt-8 leading-relaxed text-ink-soft">
+            <p className="mt-8 leading-relaxed text-ink-body">
               A hotel partnership can help make it easier for people from around
               the world to visit Cambodia, serve the community, and experience
               local life.
@@ -150,7 +151,7 @@ export default function PartnerPage() {
               lead="We would also welcome partnerships with airlines and aviation companies. Airline partners may be able to support our work through:"
             />
             <Verses className="mt-7" lines={airlineWays} />
-            <p className="mt-8 leading-relaxed text-ink-soft">
+            <p className="mt-8 leading-relaxed text-ink-body">
               We hope to build relationships with airlines that share our vision
               of connecting people with communities and creating opportunities
               to help others.
@@ -159,7 +160,7 @@ export default function PartnerPage() {
         </div>
       </Section>
 
-      <Section tone="sand" className="border-y border-brand-100">
+      <Section tone="sand">
         <SectionHeading
           emoji="🌱"
           title="Support our community projects"
@@ -168,13 +169,11 @@ export default function PartnerPage() {
         <ul className="mt-10 grid gap-6 md:grid-cols-2">
           {projectAreas.map((area) => (
             <Card as="li" key={area.title}>
-              <span aria-hidden className="text-3xl">
-                {area.emoji}
-              </span>
+              <Glyph size="lg">{area.emoji}</Glyph>
               <h3 className="mt-4 font-display text-2xl text-ink">
                 {area.title}
               </h3>
-              <p className="mt-3 leading-relaxed text-ink-soft">{area.body}</p>
+              <p className="mt-3 leading-relaxed text-ink-body">{area.body}</p>
             </Card>
           ))}
         </ul>
@@ -189,7 +188,7 @@ export default function PartnerPage() {
               lead="We understand that every organization has different resources and abilities."
             />
             <Verses className="mt-7" lines={contributions} />
-            <p className="mt-8 font-bold text-lg text-ink">
+            <p className="mt-8 measure text-read font-bold text-ink">
               Every partnership can create an opportunity to help someone.
             </p>
           </div>
@@ -222,7 +221,7 @@ export default function PartnerPage() {
         </div>
       </Section>
 
-      <Section id="enquire" tone="white" className="border-t border-brand-100">
+      <Section id="enquire" tone="paper" edge="top">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <SectionHeading
             emoji="✉️"

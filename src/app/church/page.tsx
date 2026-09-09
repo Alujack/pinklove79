@@ -4,6 +4,7 @@ import { PageHero } from "@/components/page-hero";
 import {
   ButtonLink,
   Card,
+  Glyph,
   IconGrid,
   Lead,
   Pledge,
@@ -82,7 +83,7 @@ export default function ChurchPage() {
         </p>
       </Lead>
 
-      <Section tone="white" className="border-y border-brand-100">
+      <Section tone="paper">
         <SectionHeading
           emoji="📖"
           title="Learning about the Bible"
@@ -97,7 +98,7 @@ export default function ChurchPage() {
         <div className="mt-9">
           <IconGrid items={teachings} columns={3} />
         </div>
-        <p className="mt-9 max-w-3xl text-lg leading-relaxed text-ink-soft">
+        <p className="mt-9 measure text-read leading-relaxed text-ink-body">
           For children especially, we want learning to be{" "}
           <span className="font-bold text-ink">
             safe, welcoming and encouraging
@@ -130,13 +131,11 @@ export default function ChurchPage() {
           <ul className="grid gap-5 sm:grid-cols-2">
             {welcome.map((item) => (
               <Card as="li" key={item.title}>
-                <span aria-hidden className="text-2xl">
-                  {item.emoji}
-                </span>
+                <Glyph>{item.emoji}</Glyph>
                 <h3 className="mt-3 font-display text-xl text-ink">
                   {item.title}
                 </h3>
-                <p className="mt-2 leading-relaxed text-ink-soft">
+                <p className="mt-2 leading-relaxed text-ink-body">
                   {item.body}
                 </p>
               </Card>
@@ -145,7 +144,7 @@ export default function ChurchPage() {
         </div>
       </Section>
 
-      <Section tone="sand" className="border-y border-brand-100">
+      <Section tone="sand">
         <SectionHeading
           emoji="🌍"
           title="Growing together"

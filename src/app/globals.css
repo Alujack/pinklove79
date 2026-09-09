@@ -16,63 +16,257 @@
   --color-brand-800: #991348;
   --color-brand-900: #7f1440;
 
-  --color-ink: #3d1f2c;
-  --color-ink-soft: #6f4b59;
+  /*
+   * Three weights of ink, not two. Headings take `ink` for authority, long
+   * passages take `ink-body` — dark enough to read a whole page in, soft
+   * enough not to feel like newsprint — and `ink-soft` is left to the meta
+   * text (labels, captions, addresses) it was always best at.
+   */
+  --color-ink: #331120;
+  --color-ink-body: #543341;
+  --color-ink-soft: #7a5464;
   --color-cream: #fffaf7;
-  --color-sand: #fdf2e9;
+  --color-sand: #fdf1e6;
+  --color-plum: #2e0f1e;
   --color-leaf: #2f7d5d;
   --color-sky: #2b6fa8;
 
-  --shadow-soft:
-    0 1px 2px rgba(61, 31, 44, 0.04), 0 12px 32px -12px rgba(186, 19, 82, 0.18);
-  --shadow-lift:
-    0 2px 4px rgba(61, 31, 44, 0.05), 0 24px 48px -16px rgba(186, 19, 82, 0.26);
-}
-
-:root {
-  color-scheme: light;
-  --page-bg: #fff5f9;
+  /*
+   * Only the *reading* text is enlarged, not the site's chrome. Nav, buttons,
+   * labels and headings keep Tailwind's default scale; body copy uses these
+   * two tokens (`text-read`, `text-read-lg`) so paragraphs are comfortable for
+   * older readers. rem values, so browser zoom still applies on top.
+   */
+  --text-read: 1.1875rem; /* 19px — body copy on a phone */
+  --text-read--line-height: 1.75;
+  --text-read-lg: 1.375rem; /* 22px — body copy from `sm` up */
+  --text-read-lg--line-height: 1.7;
 
   /*
-   * Surface tokens. Cards, tiles and forms read their fill from the band they
-   * sit in, so a white band gets pink-tinted cards while a pink or sand band
-   * gets white ones — nothing ever ends up white-on-white.
+   * Elevation reads as plum-tinted shade rather than pink glow: the old
+   * shadows were saturated enough that a card looked like it was lit from
+   * below, which flattened it against a pink band instead of lifting it.
    */
-  --surface: rgba(255, 255, 255, 0.85);
-  --surface-ring: #ffe3ed;
+  --shadow-soft:
+    0 1px 2px rgba(46, 15, 30, 0.04), 0 10px 24px -14px rgba(46, 15, 30, 0.14);
+  --shadow-card:
+    0 1px 3px rgba(46, 15, 30, 0.05), 0 16px 32px -20px rgba(46, 15, 30, 0.22);
+  --shadow-lift:
+    0 3px 8px rgba(46, 15, 30, 0.07), 0 32px 56px -28px rgba(46, 15, 30, 0.32);
 }
 
-.band-white {
-  --surface: #fff1f6;
-  --surface-ring: #ffc9dd;
+/*
+ * ------------------------------------------------------------------ bands --
+ *
+ * The page is a stack of bands, and a reader needs to feel each one arrive.
+ * That only works if consecutive bands differ by more than a rounding error,
+ * so the four fills below are spaced far enough apart to be legible as
+ * separate surfaces: blush (the default page), paper (white, for the longest
+ * reading), sand (warm, for a change of pace) and deep (plum, for one loud
+ * moment per page).
+ *
+ * Every band also republishes the tokens its children read — card fill, card
+ * ring, heading and body ink, hairline edge — so a card, a tile or a form
+ * lands correctly on any band without the page having to say which it is on.
+ */
+:root {
+  color-scheme: light;
+  --page-bg: #fff4f8;
+
+  --surface: #ffffff;
+  --surface-ring: #ffe3ed;
+  --surface-hover: #fffdfe;
+  --band-edge: #ffdce9;
+  --band-ink: var(--color-ink);
+  --band-body: var(--color-ink-body);
+  --band-soft: var(--color-ink-soft);
+  --band-accent: var(--color-brand-700);
+
+  /* Comfortable measure for continuous prose — roughly 66 characters. */
+  --measure: 34rem;
+}
+
+.band-paper {
+  --surface: #fff4f8;
+  --surface-ring: #ffd3e3;
+  --surface-hover: #ffedf3;
+  --band-edge: #ffe3ed;
+}
+
+.band-sand {
+  --surface: #fffdfb;
+  --surface-ring: #f3ddc8;
+  --surface-hover: #ffffff;
+  --band-edge: #f2dcc6;
+}
+
+.band-deep {
+  --surface: rgba(255, 255, 255, 0.07);
+  --surface-ring: rgba(255, 255, 255, 0.16);
+  --surface-hover: rgba(255, 255, 255, 0.11);
+  --band-edge: rgba(255, 255, 255, 0.14);
+  --band-ink: #ffffff;
+  --band-body: #f7dfe8;
+  --band-soft: #e8bfd0;
+  --band-accent: #ffc9dd;
 }
 
 html {
   scroll-behavior: smooth;
+  /* Keep phone browsers from re-inflating our already-large type. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   /* offset for the sticky header when jumping to an anchor */
   scroll-padding-top: 6rem;
 }
 
+/*
+ * The page-wide radial gradients that used to live here washed a pink haze
+ * over every band at once, which is why a white section and a pink one used
+ * to look like the same surface. The glow now belongs to the hero and the
+ * closing call to action — the two places it is doing expressive work — and
+ * the bands in between are left flat so their edges read.
+ */
 body {
   background-color: var(--page-bg);
-  background-image:
-    radial-gradient(900px 520px at 12% -6%, #ffe3ed 0%, transparent 62%),
-    radial-gradient(720px 480px at 96% 4%, #fff0e6 0%, transparent 58%);
-  background-repeat: no-repeat;
-  color: var(--color-ink);
+  color: var(--color-ink-body);
   font-family: var(--font-sans);
+  font-size: var(--text-read);
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings carry the darker ink; body copy stays on the softer one. */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 /* Khmer glyphs need a taller line box than the Latin body font */
 .khmer {
   font-family: var(--font-khmer);
-  line-height: 1.75;
+  line-height: 1.9;
 }
 
 ::selection {
   background-color: var(--color-brand-200);
   color: var(--color-brand-900);
+}
+
+/* ------------------------------------------------------------ atmosphere -- */
+
+/*
+ * The soft pink light that used to sit on `body`. Applied deliberately, to a
+ * `relative` element that clips its own overflow, it gives the hero and the
+ * closing call to action depth without leaking onto the reading bands.
+ */
+.glow {
+  position: relative;
+  isolation: isolate;
+}
+
+.glow::before,
+.glow::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(72px);
+}
+
+.glow::before {
+  inset-block-start: -18%;
+  inset-inline-start: -12%;
+  width: 46rem;
+  height: 34rem;
+  background: radial-gradient(closest-side, #ffd0e2 0%, transparent 72%);
+}
+
+.glow::after {
+  inset-block-start: -6%;
+  inset-inline-end: -14%;
+  width: 38rem;
+  height: 30rem;
+  background: radial-gradient(closest-side, #ffe6d5 0%, transparent 70%);
+}
+
+/* ---------------------------------------------------------------- motion -- */
+
+/*
+ * A section lifting into place as it arrives gives a long page a sense of
+ * pace. It is deliberately built so it can only ever *add* movement: the
+ * hidden state exists solely as an animation keyframe inside this
+ * `@supports` block, so a browser without scroll-driven animations — or a
+ * reader who asks for less motion — simply gets the finished layout.
+ */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 12%;
+    }
+  }
+}
+
+/*
+ * How far through the page you are, drawn as a hairline under the header.
+ * Decorative and CSS-only, so it costs nothing and degrades to nothing.
+ */
+@keyframes read-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.read-progress {
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+@supports (animation-timeline: scroll()) {
+  .read-progress {
+    animation: read-progress linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+/* --------------------------------------------------------------- reading -- */
+
+/* Caps a passage at a comfortable measure without hard-coding a max-width. */
+.measure {
+  max-width: var(--measure);
+}
+
+/*
+ * Long lists of links sit closer together than the reading line-height
+ * wants, so the footer and menus opt out rather than fighting it per item.
+ */
+.leading-ui {
+  line-height: 1.45;
 }
 
 :focus-visible {
@@ -93,4 +287,62 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ------------------------------------------------- google translate -- */
+
+/*
+ * The widget is driven entirely from the header menu, so its own UI is hidden.
+ * Google also injects a 40px banner iframe and pushes <body> down with an
+ * inline `top` to make room for it — that offset breaks the sticky header, and
+ * there is no banner left to make room for.
+ */
+#google_translate_element,
+iframe.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+/*
+ * The current widget ships a second set of chrome under hashed `VIpgJd-ZVi9od`
+ * class names — a fixed loading spinner, a banner frame and a tooltip — which
+ * the names above do not match. That family is only ever the widget's own UI,
+ * so hiding it wholesale is safe. `VIpgJd-yAWNEb-*` is deliberately NOT in
+ * here: those land on our own translated text.
+ */
+[class*="VIpgJd-ZVi9od"] {
+  display: none !important;
+}
+
+/*
+ * Whichever version is serving, it makes room for that banner by offsetting
+ * the document — variously `top`, `margin-top` or a transform. All of them
+ * break the sticky header, and there is no banner left to make room for.
+ */
+html,
+body {
+  top: 0 !important;
+  margin-top: 0 !important;
+  transform: none !important;
+}
+
+/*
+ * Translated copy is longer than the English it replaces, and the widget's
+ * overlays are positioned against the viewport. Clip rather than scroll, so
+ * neither can leave the page shifted sideways. `clip` (not `hidden`) keeps the
+ * sticky header working, since it creates no scroll container.
+ */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* Google marks every translated run with a yellow-ish highlight on hover. */
+.goog-text-highlight,
+.VIpgJd-yAWNEb-VIpgJd-fmcmS-sn54Q {
+  background: none !important;
+  box-shadow: none !important;
 }
