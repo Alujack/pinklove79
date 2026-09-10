@@ -91,7 +91,7 @@ export function MediaSlideshow({
         }
       }}
     >
-      <div className="overflow-hidden rounded-xl bg-brand-100 shadow-soft sm:rounded-2xl">
+      <div className="overflow-hidden rounded-xl bg-white/10 shadow-soft sm:rounded-2xl">
         {/*
          * `motion-safe` rather than a media-query check in JavaScript: the
          * slide still changes for a reader who asked for less motion — the
@@ -218,7 +218,7 @@ function StepButton({
       aria-label={side === "left" ? "Previous photograph" : "Next photograph"}
       // The pseudo-element grows the touch target to 48px without growing
       // the button, which has to stay small to keep off people's faces.
-      className={`absolute top-1/2 z-10 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-white/85 text-brand-700 ring-1 ring-brand-200/70 backdrop-blur-sm transition-colors before:absolute before:-inset-2 before:content-[''] hover:bg-white ${
+      className={`absolute top-1/2 z-10 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-white/85 text-brand-700 ring-1 ring-white/50 backdrop-blur-sm transition-colors before:absolute before:-inset-2 before:content-[''] hover:bg-white ${
         side === "left" ? "left-2 sm:left-3" : "right-2 sm:right-3"
       }`}
     >

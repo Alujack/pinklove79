@@ -105,7 +105,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-haspopup="menu"
-        className="flex items-center gap-1.5 rounded-full py-3 pr-3.5 pl-3 text-sm font-semibold text-ink-soft transition-colors hover:bg-brand-100 hover:text-brand-700"
+        className="flex items-center gap-1.5 rounded-full py-3 pr-3.5 pl-3 text-sm font-semibold text-ink-soft transition-colors hover:bg-white/15 hover:text-white"
       >
         <span className="sr-only">Language — {languageLabel(current)}</span>
         <Globe className="h-4.5 w-4.5 shrink-0" />
@@ -116,7 +116,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         <ul
           role="menu"
           aria-label="Language"
-          className="absolute top-full right-0 z-50 mt-2 w-44 overflow-hidden rounded-2xl border border-brand-100 bg-white py-1.5 shadow-lift"
+          className="absolute top-full right-0 z-50 mt-2 w-44 overflow-hidden rounded-2xl border border-white/20 bg-berry-900 py-1.5 shadow-lift"
         >
           {languages.map(([code, label]) => (
             <li key={code}>
@@ -130,8 +130,8 @@ export function LanguageSwitcher({ className }: { className?: string }) {
                 }}
                 className={
                   code === current
-                    ? "flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-bold text-brand-700"
-                    : "flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-medium text-ink-soft transition-colors hover:bg-brand-50 hover:text-brand-700"
+                    ? "flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-bold text-white"
+                    : "flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-medium text-ink-soft transition-colors hover:bg-white/12 hover:text-white"
                 }
               >
                 <span>{label}</span>
@@ -154,7 +154,7 @@ export function LanguageOptions({ className }: { className?: string }) {
 
   return (
     <div className={`notranslate ${className ?? ""}`} translate="no">
-      <h2 className="flex items-center gap-2 px-1 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+      <h2 className="flex items-center gap-2 px-1 text-xs font-bold tracking-[0.14em] text-white uppercase">
         <Globe className="h-4 w-4 shrink-0" />
         Language
       </h2>
@@ -169,8 +169,8 @@ export function LanguageOptions({ className }: { className?: string }) {
               }}
               className={
                 code === current
-                  ? "flex items-center gap-1.5 rounded-full bg-brand-600 px-3.5 py-2 text-sm font-bold text-white"
-                  : "flex items-center gap-1.5 rounded-full bg-white/70 px-3.5 py-2 text-sm font-semibold text-ink-soft ring-1 ring-brand-200 transition-colors hover:bg-brand-100 hover:text-brand-700"
+                  ? "flex items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-sm font-bold text-berry-800"
+                  : "flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-2 text-sm font-semibold text-ink-soft ring-1 ring-white/30 transition-colors hover:bg-white/20 hover:text-white"
               }
             >
               {code === current ? <Check /> : null}

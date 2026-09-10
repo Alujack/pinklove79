@@ -43,8 +43,12 @@ export function Section({
   children: ReactNode;
   id?: string;
   className?: string;
-  /** `white` is kept as an alias for `paper` — several pages ask for it by that name. */
-  tone?: "plain" | "paper" | "white" | "brand" | "sand" | "deep";
+  /**
+   * `white` is kept as an alias for `paper`, and `sand` for `blush` — several
+   * pages still ask for those tones by their old names. Neither paints white
+   * or beige any more; the whole ladder is pink.
+   */
+  tone?: "plain" | "paper" | "white" | "brand" | "sand" | "blush" | "deep";
   size?: "sm" | "md" | "lg";
   /** Hairline rules that make the band change legible. */
   edge?: "top" | "bottom" | "both" | "none";
@@ -52,10 +56,11 @@ export function Section({
 }) {
   const tones = {
     plain: "",
-    paper: "band-paper bg-white",
-    white: "band-paper bg-white",
-    sand: "band-sand bg-sand",
-    brand: "band-deep bg-brand-600 text-white",
+    paper: "band-paper bg-berry-700",
+    white: "band-paper bg-berry-700",
+    blush: "band-blush bg-berry-500",
+    sand: "band-blush bg-berry-500",
+    brand: "band-deep brand-fill text-white",
     deep: "band-deep bg-plum text-white",
   } as const;
 
@@ -115,7 +120,7 @@ export function Glyph({
     <span
       aria-hidden
       className={cx(
-        "grid shrink-0 place-items-center bg-brand-100 leading-none text-brand-700 ring-1 ring-brand-200/70",
+        "grid shrink-0 place-items-center bg-white/15 leading-none text-white ring-1 ring-white/25",
         sizes[size],
         className,
       )}
@@ -213,7 +218,7 @@ export function Lead({ children }: { children: ReactNode }) {
         {/* A rule down the left edge marks this out as the page's opening note. */}
         <span
           aria-hidden
-          className="absolute inset-y-1 left-0 w-1 rounded-full bg-gradient-to-b from-brand-300 to-brand-100"
+          className="absolute inset-y-1 left-0 w-1 rounded-full bg-gradient-to-b from-white/75 to-white/20"
         />
         {children}
       </div>
@@ -238,7 +243,7 @@ export function Verses({
         >
           <Icon
             name="check"
-            className="mt-[0.45em] h-4 w-4 shrink-0 text-brand-500"
+            className="mt-[0.45em] h-4 w-4 shrink-0 text-[color:var(--band-accent)]"
           />
           <span>{line}</span>
         </li>
@@ -250,7 +255,7 @@ export function Verses({
 /** Quiet, non-interactive metadata — deliberately not shaped like a button. */
 export function Chip({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-md bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700 ring-1 ring-brand-100">
+    <span className="inline-flex items-center rounded-md bg-white/12 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/20">
       {children}
     </span>
   );
@@ -260,16 +265,19 @@ export function Chip({ children }: { children: ReactNode }) {
 
 type ButtonTone = "primary" | "secondary" | "ghost" | "onBrand";
 
+/*
+ * The polarity is inverted from where it started. On a pale page the loud
+ * button was a pink fill; on a pink page the loudest thing available is
+ * white, so `primary` is the white pill and `secondary` is the hairline
+ * outline beside it. `onBrand` survives as an alias for the same white pill,
+ * because that is exactly what the brand panels were already asking for.
+ */
 const buttonTones: Record<ButtonTone, string> = {
   primary:
-    "bg-brand-600 text-white shadow-soft hover:bg-brand-700 hover:shadow-card active:bg-brand-800",
-  // A white fill ringed in pale pink read as a disabled control on a pink
-  // page. Taking the fill from the band's own surface token means it is
-  // always a step away from whatever is behind it — white on a blush band,
-  // blush on a white one — and the stronger ring makes it a real choice.
+    "bg-white text-berry-800 shadow-soft hover:bg-brand-50 hover:shadow-card active:bg-brand-100",
   secondary:
-    "bg-[var(--surface)] text-brand-700 ring-1 ring-brand-300 hover:bg-brand-100 hover:ring-brand-400",
-  ghost: "text-brand-700 hover:bg-brand-100",
+    "bg-white/10 text-white ring-1 ring-white/45 hover:bg-white/20 hover:ring-white/70",
+  ghost: "text-white hover:bg-white/15",
   onBrand: "bg-white text-brand-700 shadow-soft hover:bg-brand-50",
 };
 
@@ -340,7 +348,7 @@ export function ArrowLink({
     <Link
       href={href}
       className={cx(
-        "group/arrow -mx-2 inline-flex min-h-11 items-center gap-1.5 rounded-full px-2 text-sm font-bold text-brand-700 transition-colors hover:text-brand-800",
+        "group/arrow -mx-2 inline-flex min-h-11 items-center gap-1.5 rounded-full px-2 text-sm font-bold text-[color:var(--band-accent)] transition-colors hover:text-white",
         className,
       )}
     >
@@ -432,7 +440,7 @@ export function IconGrid({
 export function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <p className="font-display text-4xl leading-none text-brand-600">
+      <p className="font-display text-4xl leading-none text-white">
         {value}
       </p>
       <p className="mt-2 text-xs font-bold tracking-[0.1em] text-[color:var(--band-soft)] uppercase">
@@ -455,7 +463,7 @@ export function Pledge({
       className={cx(
         "relative overflow-hidden rounded-3xl px-6 py-8 sm:px-10 sm:py-10",
         tone === "brand"
-          ? "glow band-deep bg-brand-600 text-white shadow-lift"
+          ? "glow band-deep brand-fill text-white shadow-lift"
           : "bg-[var(--surface)] ring-1 ring-[color:var(--surface-ring)] shadow-soft",
       )}
     >
@@ -465,7 +473,7 @@ export function Pledge({
         name="quote"
         className={cx(
           "pointer-events-none absolute -top-3 right-4 h-20 w-20",
-          tone === "brand" ? "text-white/15" : "text-brand-200/60",
+          tone === "brand" ? "text-white/15" : "text-white/20",
         )}
       />
       <div className="relative measure space-y-1.5">

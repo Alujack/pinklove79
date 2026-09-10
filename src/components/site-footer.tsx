@@ -13,7 +13,7 @@ const support = [
 
 function FooterHeading({ children }: { children: string }) {
   return (
-    <h2 className="text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+    <h2 className="text-xs font-bold tracking-[0.14em] text-white uppercase">
       {children}
     </h2>
   );
@@ -23,7 +23,7 @@ function FooterLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="-mx-2 inline-block rounded-lg px-2 py-2 font-medium text-ink-body transition-colors hover:bg-brand-50 hover:text-brand-700"
+      className="-mx-2 inline-block rounded-lg px-2 py-2 font-medium text-ink-body transition-colors hover:bg-white/12 hover:text-white"
     >
       {label}
     </Link>
@@ -42,7 +42,7 @@ function ContactRow({
 }) {
   const body = (
     <>
-      <Icon name={icon} className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
+      <Icon name={icon} className="mt-0.5 h-4 w-4 shrink-0 text-[#ffb3cf]" />
       <span>{children}</span>
     </>
   );
@@ -52,7 +52,7 @@ function ContactRow({
       {href ? (
         <a
           href={href}
-          className="-mx-2 flex items-start gap-2.5 rounded-lg px-2 py-2 font-medium text-ink-body transition-colors hover:bg-brand-50 hover:text-brand-700"
+          className="-mx-2 flex items-start gap-2.5 rounded-lg px-2 py-2 font-medium text-ink-body transition-colors hover:bg-white/12 hover:text-white"
         >
           {body}
         </a>
@@ -67,21 +67,22 @@ function ContactRow({
 
 /*
  * The footer used to be `bg-white/70` over a pink page, which meant the page
- * simply dissolved rather than ending. A solid white ground with a defined
- * top edge gives the site a floor, and the link lists drop to the compact
+ * simply dissolved rather than ending. It now takes the deepest rung of the
+ * berry scale, which gives the site a floor to stop on — the page gets darker
+ * as it ends rather than dissolving — and the link lists drop to the compact
  * `leading-ui` line-height — the reading line-height is generous for
  * paragraphs and much too loose for a column of eight links.
  */
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-brand-200/70 bg-white">
+    <footer className="mt-auto border-t border-white/15 bg-berry-900">
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div>
-            <div className="flex items-center gap-3 font-display text-2xl text-ink">
+            <div className="flex items-center gap-3 font-display text-2xl text-white">
               <HeartMark className="h-10 w-10 shrink-0" />
               <span translate="no">
-                PinkLove<span className="text-brand-600">79</span>
+                PinkLove<span className="text-[#ffb3cf]">79</span>
               </span>
             </div>
             <p className="measure mt-4 leading-relaxed text-ink-body">
@@ -136,10 +137,10 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-brand-100 pt-7 text-base text-ink-soft sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/15 pt-7 text-base text-ink-soft sm:flex-row sm:items-center sm:justify-between">
           <p className="flex items-center gap-1.5">
             © {new Date().getFullYear()} {site.name}. Thank you for caring.
-            <Icon name="heart" className="h-3.5 w-3.5 text-brand-400" />
+            <Icon name="heart" className="h-3.5 w-3.5 text-[#ffb3cf]" />
           </p>
           <p>One community. One hope for a better future.</p>
         </div>

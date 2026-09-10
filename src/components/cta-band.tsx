@@ -24,12 +24,12 @@ export function CtaBand({
   return (
     <section className="py-16 sm:py-24">
       <Container className="reveal">
-        <div className="glow band-deep overflow-hidden rounded-3xl bg-brand-600 px-7 py-12 text-white shadow-lift sm:px-14 sm:py-16">
+        <div className="glow band-deep brand-fill overflow-hidden rounded-3xl px-7 py-12 text-white shadow-lift sm:px-14 sm:py-16">
           <div className="measure">
             <h2 className="font-display text-3xl leading-[1.15] text-white sm:text-4xl">
               {title}
             </h2>
-            <p className="mt-4 text-read text-brand-50 sm:text-read-lg">
+            <p className="mt-4 text-read text-white sm:text-read-lg">
               {lead}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -37,10 +37,7 @@ export function CtaBand({
                 {primary.label}
                 <Icon name="heart" className="h-4 w-4" />
               </ButtonLink>
-              <ButtonLink
-                href={secondary.href}
-                className="bg-transparent text-white ring-1 ring-white/45 hover:bg-white/12 hover:ring-white/70"
-              >
+              <ButtonLink href={secondary.href} tone="secondary">
                 {secondary.label}
               </ButtonLink>
             </div>

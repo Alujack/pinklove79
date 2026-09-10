@@ -78,7 +78,7 @@ export default function ChildrenPage() {
         title={
           <>
             79 children, 79 stories,{" "}
-            <span className="text-brand-600">one hope</span>
+            <span className="text-[#ffb3cf]">one hope</span>
           </>
         }
         lead="Behind the number 79 are 79 children, each with a story, a family, and a dream for the future."
@@ -102,7 +102,7 @@ export default function ChildrenPage() {
             <Verses className="mt-8" lines={circumstances} />
           </div>
           <Card className="lg:mt-4">
-            <p className="text-sm font-bold tracking-[0.14em] text-brand-700 uppercase">
+            <p className="text-sm font-bold tracking-[0.14em] text-[color:var(--band-accent)] uppercase">
               What they share
             </p>
             <ul className="mt-6 space-y-4">
