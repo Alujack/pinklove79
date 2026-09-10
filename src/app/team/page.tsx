@@ -71,7 +71,7 @@ function ContactRows({ person }: { person: Person }) {
   const { whatsapp, phone, email } = person.contact;
   const rows = [
     whatsapp && {
-      icon: "phone",
+      icon: "chat",
       label: "WhatsApp",
       value: whatsapp,
       href: `https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`,
