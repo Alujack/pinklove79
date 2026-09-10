@@ -3,25 +3,12 @@ import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  founders,
-  initials,
-  personNames,
-  team,
-  type Person,
-} from "@/lib/team";
+import { founders, initials, team, type Person } from "@/lib/team";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { Icon, type IconName } from "@/components/icons";
 import { Card, Lead, Section, SectionHeading } from "@/components/ui";
-import { BRAND_TERMS, makeProtector } from "@/components/brand";
-
-/*
- * The Team page is the only place people's names are rendered, so the roster
- * is folded into the protector here rather than in the shared helper — that
- * keeps the bios out of every other page's module graph.
- */
-const withNames = makeProtector([...BRAND_TERMS, ...personNames]);
+import { withNames } from "@/components/names";
 
 export const metadata: Metadata = {
   title: "Meet Our Founders & Team",
