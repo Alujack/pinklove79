@@ -121,14 +121,20 @@ export function SiteHeader() {
         >
           <Container className="py-4">
             {/*
-             * An ordered list, and numbered on the face of it: the eight pages
+             * An ordered list, and numbered on the face of it: the nine pages
              * are a route through the work rather than a pile of links, and a
              * reader scanning on a phone can hold "I was on 5" in their head.
              * The digits are `aria-hidden` because the `<ol>` already tells a
              * screen reader which item of how many this is.
+             *
+             * Home leads the list. It used to be sliced off — the wordmark
+             * already goes there — but on a phone the wordmark is a small
+             * target next to the menu you have just opened, and a reader deep
+             * in the site looking for the way back should not have to know
+             * that the logo is a link.
              */}
             <ol className="rounded-3xl border border-white/20 bg-white/10 p-2 shadow-soft">
-              {nav.slice(1).map((item, index) => {
+              {nav.map((item, index) => {
                 const active = isActive(item.href);
 
                 return (
