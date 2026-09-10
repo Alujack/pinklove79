@@ -89,7 +89,7 @@ export default function VillagersPage() {
         title={
           <>
             Supporting 500 villagers{" "}
-            <span className="text-brand-600">and their families</span>
+            <span className="text-[#ffb3cf]">and their families</span>
           </>
         }
         lead="Our community work extends beyond supporting children. We also want to help around 500 villagers and their families who are facing financial difficulties and limited opportunities."
@@ -124,7 +124,7 @@ export default function VillagersPage() {
         <div className="mt-10">
           <IconGrid items={farmingSupport} columns={2} />
         </div>
-        <p className="mt-9 measure font-display text-2xl leading-snug text-brand-700">
+        <p className="mt-9 measure font-display text-2xl leading-snug text-[color:var(--band-accent)]">
           Our goal is to help families grow, sell, earn, and gradually become
           more self-reliant.
         </p>
@@ -237,7 +237,7 @@ export default function VillagersPage() {
           {visionAreas.map((area) => (
             <li
               key={area.label}
-              className="flex items-center gap-2.5 rounded-full bg-brand-50 px-5 py-3 text-sm font-bold text-brand-800 ring-1 ring-brand-200"
+              className="flex items-center gap-2.5 rounded-full bg-white/12 px-5 py-3 text-sm font-bold text-white ring-1 ring-white/25"
             >
               <span aria-hidden className="text-lg">
                 {area.emoji}

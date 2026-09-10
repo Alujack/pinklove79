@@ -71,7 +71,7 @@ export default function DonatePage() {
         title={
           <>
             Your kindness can{" "}
-            <span className="text-brand-600">make a difference</span>
+            <span className="text-[#ffb3cf]">make a difference</span>
           </>
         }
         lead="Every contribution, large or small, can help us support children, families and communities in Cambodia."
@@ -153,7 +153,7 @@ export default function DonatePage() {
             </Prose>
             <ul className="mt-7 space-y-3">
               {becomes.map((line) => (
-                <li key={line} className="font-display text-xl text-brand-700">
+                <li key={line} className="font-display text-xl text-[color:var(--band-accent)]">
                   {line}
                 </li>
               ))}
@@ -165,16 +165,16 @@ export default function DonatePage() {
       {/* ------------------------------------------------------ donate now -- */}
       <section id="give" className="py-16 sm:py-24">
         <Container>
-          <div className="glow band-deep overflow-hidden rounded-3xl bg-brand-600 px-7 py-12 text-white shadow-lift sm:px-14 sm:py-16">
+          <div className="glow band-deep brand-fill overflow-hidden rounded-3xl px-7 py-12 text-white shadow-lift sm:px-14 sm:py-16">
             <div className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
               <div>
-                <p className="text-xs font-bold tracking-[0.16em] uppercase text-brand-100">
+                <p className="text-xs font-bold tracking-[0.16em] uppercase text-white/80">
                   Thank you
                 </p>
                 <h2 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
                   Donate today
                 </h2>
-                <p className="mt-5 measure text-read leading-relaxed text-brand-50">
+                <p className="mt-5 measure text-read leading-relaxed text-white">
                   Whether you give a little or a lot, your kindness can become
                   part of a bigger story of hope, compassion and positive change
                   in Cambodia.
@@ -188,13 +188,13 @@ export default function DonatePage() {
                 </p>
               </div>
 
-              <div className="rounded-3xl bg-brand-800/45 p-7 ring-1 ring-white/25 backdrop-blur-sm">
+              <div className="rounded-3xl bg-berry-900/45 p-7 ring-1 ring-white/25 backdrop-blur-sm">
                 {site.donateUrl ? (
                   <>
                     <h3 className="font-display text-2xl">
                       Give securely online
                     </h3>
-                    <p className="mt-3 leading-relaxed text-brand-50">
+                    <p className="mt-3 leading-relaxed text-white">
                       One-time or monthly — every contribution makes a
                       difference.
                     </p>
@@ -211,7 +211,7 @@ export default function DonatePage() {
                     <h3 className="font-display text-2xl">
                       How to make your gift
                     </h3>
-                    <p className="mt-3 leading-relaxed text-brand-50">
+                    <p className="mt-3 leading-relaxed text-white">
                       Our online giving page is being set up. In the meantime,
                       please contact our team and we will send you the donation
                       details right away.
@@ -262,7 +262,7 @@ export default function DonatePage() {
       <Section
         id="donation-form"
         tone="sand"
-        className="border-y border-brand-100"
+        className="border-y border-white/15"
       >
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <SectionHeading
@@ -279,7 +279,7 @@ export default function DonatePage() {
       </Section>
 
       <Section className="py-14">
-        <p className="text-center font-display text-2xl text-brand-700">
+        <p className="text-center font-display text-2xl text-[color:var(--band-accent)]">
           Every contribution makes a difference.
         </p>
       </Section>

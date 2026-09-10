@@ -19,7 +19,7 @@ import { Button, Glyph } from "@/components/ui";
  * band, so a field always reads as somewhere you can type.
  */
 const fieldBase =
-  "block w-full rounded-2xl border-0 bg-[var(--field)] text-base text-ink ring-1 ring-[color:var(--field-ring)] transition-shadow placeholder:text-ink-soft/60 focus:ring-2 focus:ring-brand-500";
+  "block w-full rounded-2xl border-0 bg-[var(--field)] text-base text-ink ring-1 ring-[color:var(--field-ring)] transition-shadow placeholder:text-white/65 focus:ring-2 focus:ring-white";
 
 /** Single-line controls share a fixed height; the textarea sets its own. */
 const fieldClass = `${fieldBase} h-13 px-4`;
@@ -68,7 +68,7 @@ function Label({
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} className="mt-2 text-sm font-semibold text-brand-700">
+    <p id={id} className="mt-2 text-sm font-semibold text-[#ffd0dd]">
       {message}
     </p>
   );
@@ -118,7 +118,7 @@ export function InquiryForm({
       {state.status === "error" && state.message ? (
         <p
           role="alert"
-          className="mb-6 rounded-2xl bg-brand-100 px-4 py-3 text-sm font-semibold text-brand-800"
+          className="mb-6 rounded-2xl bg-white/15 px-4 py-3 text-sm font-semibold text-white ring-1 ring-white/30"
         >
           {state.message}
         </p>
@@ -200,7 +200,7 @@ export function InquiryForm({
             </select>
             <Icon
               name="chevron-down"
-              className="pointer-events-none absolute inset-y-0 end-4 my-auto h-4 w-4 text-brand-500"
+              className="pointer-events-none absolute inset-y-0 end-4 my-auto h-4 w-4 text-white/70"
             />
           </div>
         </Field>

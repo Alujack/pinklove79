@@ -16,16 +16,32 @@
   --color-brand-900: #7f1440;
 
   /*
-   * Three weights of ink, not two. Headings take `ink` for authority, long
-   * passages take `ink-body` — dark enough to read a whole page in, soft
-   * enough not to feel like newsprint — and `ink-soft` is left to the meta
-   * text (labels, captions, addresses) it was always best at.
+   * ---------------------------------------------------------------- berry --
+   *
+   * The ground the site stands on. The page is pink now — the deep rose of
+   * the call-to-action card, not a blush tint of it — so these are the fills
+   * every band is cut from.
+   *
+   * The scale is picked against white type, not by eye: each rung clears 4.5:1
+   * with white, and the lightest one (500) is reserved for decoration rather
+   * than any band that carries body copy, where it would fall just short.
    */
-  --color-ink: #331120;
-  --color-ink-body: #543341;
-  --color-ink-soft: #7a5464;
-  --color-cream: #fffaf7;
-  --color-sand: #fdf1e6;
+  --color-berry-500: #c43c6a;
+  --color-berry-600: #b8355f;
+  --color-berry-700: #a72e54;
+  --color-berry-800: #93254a;
+  --color-berry-900: #7e1d3e;
+
+  /*
+   * Three weights of ink, not two — inverted, because every surface behind
+   * them is now deep rose. Headings take plain white for authority, long
+   * passages take `ink-body` (a warm off-white that stops a page of white
+   * text glaring), and `ink-soft` is left to the meta text — labels,
+   * captions, addresses — it was always best at.
+   */
+  --color-ink: #ffffff;
+  --color-ink-body: #fff0f6;
+  --color-ink-soft: #ffe4ef;
   --color-plum: #2e0f1e;
   --color-leaf: #2f7d5d;
   --color-sky: #2b6fa8;
@@ -42,46 +58,58 @@
   --text-read-lg--line-height: 1.7;
 
   /*
-   * Elevation reads as plum-tinted shade rather than pink glow: the old
-   * shadows were saturated enough that a card looked like it was lit from
-   * below, which flattened it against a pink band instead of lifting it.
+   * Elevation is plum-tinted shade. It has to work harder than it did on a
+   * pale page: a soft grey drop shadow is nearly invisible against deep rose,
+   * so these are darker and tighter, and the cards lean on their pale ring
+   * for the top edge rather than on shade alone.
    */
   --shadow-soft:
-    0 1px 2px rgba(46, 15, 30, 0.04), 0 10px 24px -14px rgba(46, 15, 30, 0.14);
+    0 1px 2px rgba(46, 15, 30, 0.10), 0 10px 24px -14px rgba(46, 15, 30, 0.40);
   --shadow-card:
-    0 1px 3px rgba(46, 15, 30, 0.05), 0 16px 32px -20px rgba(46, 15, 30, 0.22);
+    0 1px 3px rgba(46, 15, 30, 0.14), 0 16px 32px -20px rgba(46, 15, 30, 0.55);
   --shadow-lift:
-    0 3px 8px rgba(46, 15, 30, 0.07), 0 32px 56px -28px rgba(46, 15, 30, 0.32);
+    0 3px 8px rgba(46, 15, 30, 0.18), 0 32px 56px -28px rgba(46, 15, 30, 0.70);
 }
 
 /*
  * ------------------------------------------------------------------ bands --
  *
  * The page is a stack of bands, and a reader needs to feel each one arrive.
- * That only works if consecutive bands differ by more than a rounding error,
- * so the four fills below are spaced far enough apart to be legible as
- * separate surfaces: blush (the default page), paper (white, for the longest
- * reading), sand (warm, for a change of pace) and deep (plum, for one loud
- * moment per page).
+ * Every band is now cut from the berry scale, so the rhythm is carried by
+ * depth rather than by swapping between a pink surface and a neutral one.
+ *
+ * The ladder is ordered by how much reading each band has to carry, not by
+ * how light it looks: `paper` — the band under the longest passages — is the
+ * *deepest* rose, because that is where white type has the most contrast.
+ * `blush` is the lightest, so it lifts its own body copy to pure white to
+ * stay above 4.5:1.
  *
  * Every band also republishes the tokens its children read — card fill, card
  * ring, heading and body ink, hairline edge — so a card, a tile or a form
  * lands correctly on any band without the page having to say which it is on.
+ *
+ * Cards are frosted white rather than a solid fill: a lighter wash of the
+ * band it sits on, held together by a pale ring. A solid white card on this
+ * ground punched a hole in the page.
  */
 :root {
-  color-scheme: light;
-  --page-bg: #fff4f8;
+  /*
+   * The site reads as a dark-ground design now, and this is what tells the
+   * browser so — native selects, scrollbars and autofill all follow it.
+   */
+  color-scheme: dark;
+  --page-bg: var(--color-berry-600);
 
-  --surface: #ffffff;
-  --surface-ring: #ffe3ed;
-  --surface-hover: #fffdfe;
-  --field: #fff4f8;
-  --field-ring: #ffd3e3;
-  --band-edge: #ffdce9;
+  --surface: rgba(255, 255, 255, 0.1);
+  --surface-ring: rgba(255, 255, 255, 0.22);
+  --surface-hover: rgba(255, 255, 255, 0.16);
+  --field: rgba(255, 255, 255, 0.12);
+  --field-ring: rgba(255, 255, 255, 0.32);
+  --band-edge: rgba(255, 255, 255, 0.18);
   --band-ink: var(--color-ink);
   --band-body: var(--color-ink-body);
   --band-soft: var(--color-ink-soft);
-  --band-accent: var(--color-brand-700);
+  --band-accent: #ffe4ef;
 
   /*
    * Comfortable measure for continuous prose. Body copy is 22px from `sm`
@@ -92,33 +120,48 @@
   --measure: 46rem;
 }
 
+/*
+ * The reading well. Deepest rose on the page, so the longest passages get the
+ * strongest contrast; its cards lift a little further out of it to compensate.
+ */
 .band-paper {
-  --surface: #fff4f8;
-  --surface-ring: #ffd3e3;
-  --surface-hover: #ffedf3;
-  --band-edge: #ffe3ed;
-  --field: #ffffff;
-  --field-ring: #ffc9dd;
+  --surface: rgba(255, 255, 255, 0.12);
+  --surface-ring: rgba(255, 255, 255, 0.24);
+  --surface-hover: rgba(255, 255, 255, 0.18);
+  --field: rgba(255, 255, 255, 0.14);
+  --field-ring: rgba(255, 255, 255, 0.34);
+  --band-edge: rgba(255, 255, 255, 0.2);
 }
 
+/*
+ * The lightest band, for a change of pace. `.band-sand` is kept as an alias
+ * because several pages still ask for that tone by name; nothing beige is
+ * left in it. Body copy and accents go to pure white here — on this rung the
+ * warm off-white would drop under 4.5:1.
+ */
+.band-blush,
 .band-sand {
-  --surface: #fffdfb;
-  --surface-ring: #f3ddc8;
-  --surface-hover: #ffffff;
-  --band-edge: #f2dcc6;
-  --field: #fdf6ef;
-  --field-ring: #f0d8c0;
+  --surface: rgba(255, 255, 255, 0.13);
+  --surface-ring: rgba(255, 255, 255, 0.26);
+  --surface-hover: rgba(255, 255, 255, 0.2);
+  --field: rgba(255, 255, 255, 0.16);
+  --field-ring: rgba(255, 255, 255, 0.36);
+  --band-edge: rgba(255, 255, 255, 0.22);
+  --band-body: #ffffff;
+  --band-soft: #fff0f6;
+  --band-accent: #ffffff;
 }
 
+/* The loud moments — the hot brand fill, and plum. */
 .band-deep {
-  --surface: rgba(255, 255, 255, 0.07);
-  --surface-ring: rgba(255, 255, 255, 0.16);
-  --surface-hover: rgba(255, 255, 255, 0.11);
-  --band-edge: rgba(255, 255, 255, 0.14);
+  --surface: rgba(255, 255, 255, 0.12);
+  --surface-ring: rgba(255, 255, 255, 0.24);
+  --surface-hover: rgba(255, 255, 255, 0.18);
+  --band-edge: rgba(255, 255, 255, 0.24);
   --band-ink: #ffffff;
-  --band-body: #f7dfe8;
-  --band-soft: #e8bfd0;
-  --band-accent: #ffc9dd;
+  --band-body: #fff0f6;
+  --band-soft: #ffe4ef;
+  --band-accent: #ffffff;
 }
 
 html {
@@ -131,11 +174,11 @@ html {
 }
 
 /*
- * The page-wide radial gradients that used to live here washed a pink haze
- * over every band at once, which is why a white section and a pink one used
- * to look like the same surface. The glow now belongs to the hero and the
- * closing call to action — the two places it is doing expressive work — and
- * the bands in between are left flat so their edges read.
+ * The page ground is deliberately flat. A page-wide gradient here washes a
+ * haze over every band at once, which is what makes two neighbouring bands
+ * look like the same surface. The gradients belong to the hero and the
+ * closing call to action — the two places they are doing expressive work —
+ * and the bands in between are left flat so their edges read.
  */
 body {
   background-color: var(--page-bg);
@@ -178,16 +221,50 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-brand-200);
-  color: var(--color-brand-900);
+  background-color: #ffd9e8;
+  color: var(--color-berry-900);
 }
 
 /* ------------------------------------------------------------ atmosphere -- */
 
 /*
- * The soft pink light that used to sit on `body`. Applied deliberately, to a
- * `relative` element that clips its own overflow, it gives the hero and the
- * closing call to action depth without leaking onto the reading bands.
+ * The brand fill used by the loud moments — the closing call to action, the
+ * pledge panels. Now that the whole page is rose, this has to be the *hotter*
+ * pink to still read as a raised moment: the ground is dusty, this is vivid.
+ * The stops stay dark enough that white body copy clears 4.5:1 anywhere on
+ * the panel, which the original brighter top stop did not.
+ */
+.brand-fill {
+  background-color: #cc1a5c;
+  background-image:
+    radial-gradient(
+      120% 120% at 8% -10%,
+      #dd3070 0%,
+      #cc1a5c 45%,
+      #a30f47 100%
+    );
+}
+
+/*
+ * The hero ground: a masthead cut from the deep end of the berry scale,
+ * easing down to exactly the page colour so the two meet without a seam. The
+ * heaviest type on the page sits at the top, where the contrast is highest.
+ */
+.hero-ground {
+  background-color: var(--color-berry-600);
+  background-image: radial-gradient(
+    125% 125% at 12% -12%,
+    #c43c6a 0%,
+    #b8355f 52%,
+    #ac2f57 100%
+  );
+}
+
+/*
+ * The soft light applied deliberately, to a `relative` element that clips its
+ * own overflow. On a dark ground it works the other way round from before —
+ * a pale warm bloom lifting the corner of the hero and the call to action,
+ * rather than a pink tint deepening a white one.
  */
 .glow {
   position: relative;
@@ -209,7 +286,11 @@ body {
   inset-inline-start: -12%;
   width: 46rem;
   height: 34rem;
-  background: radial-gradient(closest-side, #ffd0e2 0%, transparent 72%);
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 190, 214, 0.34) 0%,
+    transparent 72%
+  );
 }
 
 .glow::after {
@@ -217,7 +298,11 @@ body {
   inset-inline-end: -14%;
   width: 38rem;
   height: 30rem;
-  background: radial-gradient(closest-side, #ffe6d5 0%, transparent 70%);
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 214, 178, 0.22) 0%,
+    transparent 70%
+  );
 }
 
 /* ---------------------------------------------------------------- motion -- */
@@ -307,7 +392,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-brand-600);
+  outline: 2px solid #ffffff;
   outline-offset: 3px;
   border-radius: 4px;
 }

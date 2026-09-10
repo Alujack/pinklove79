@@ -93,7 +93,7 @@ export default function PartnerPage() {
         title={
           <>
             Lasting change happens when we{" "}
-            <span className="text-brand-600">work together</span>
+            <span className="text-[#ffb3cf]">work together</span>
           </>
         }
         lead="We are looking for churches, charities, schools, universities and colleges, hotels, airlines, tour companies, private companies, factories, community organizations and other groups who would like to partner with us to support children, families and communities in Cambodia."

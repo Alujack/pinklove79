@@ -70,7 +70,7 @@ export default function ChurchPage() {
         title={
           <>
             One church — a place to{" "}
-            <span className="text-brand-600">learn, grow and serve</span>
+            <span className="text-[#ffb3cf]">learn, grow and serve</span>
           </>
         }
         lead="Our community also runs one local church that welcomes children, families and community members who wish to come together to learn and grow in faith."

@@ -26,7 +26,7 @@ export default function ContactPage() {
         title={
           <>
             We would love to{" "}
-            <span className="text-brand-600">hear from you</span>
+            <span className="text-[#ffb3cf]">hear from you</span>
           </>
         }
         lead="We welcome individuals, organizations and partners who would like to learn more about PinkLove79 or support our community projects in Cambodia."
@@ -51,9 +51,9 @@ export default function ContactPage() {
             </ul>
 
             <Card className="mt-9">
-              <dl className="divide-y divide-brand-100">
+              <dl className="divide-y divide-white/15">
                 <div className="py-5 first:pt-0 last:pb-0">
-                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-[color:var(--band-accent)] uppercase">
                     <Icon name="pin" className="h-4 w-4" />
                     Address
                   </dt>
@@ -67,7 +67,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="py-5 first:pt-0 last:pb-0">
-                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-[color:var(--band-accent)] uppercase">
                     <Icon name="mail" className="h-4 w-4" />
                     Email
                   </dt>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                     {site.email ? (
                       <a
                         href={`mailto:${site.email}`}
-                        className="font-semibold text-brand-700 hover:text-brand-800"
+                        className="font-semibold text-[color:var(--band-accent)] hover:text-white"
                       >
                         {site.email}
                       </a>
@@ -89,7 +89,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="py-5 first:pt-0 last:pb-0">
-                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-[color:var(--band-accent)] uppercase">
                     <Icon name="phone" className="h-4 w-4" />
                     Phone / WhatsApp
                   </dt>
@@ -97,7 +97,7 @@ export default function ContactPage() {
                     {site.phone ? (
                       <a
                         href={whatsappHref || `tel:${site.phone}`}
-                        className="font-semibold text-brand-700 hover:text-brand-800"
+                        className="font-semibold text-[color:var(--band-accent)] hover:text-white"
                       >
                         {site.phone}
                       </a>
@@ -110,7 +110,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="py-5 first:pt-0 last:pb-0">
-                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+                  <dt className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-[color:var(--band-accent)] uppercase">
                     <Icon name="globe" className="h-4 w-4" />
                     Website
                   </dt>

@@ -47,7 +47,7 @@ export default function VolunteerPage() {
         title={
           <>
             Your time can{" "}
-            <span className="text-brand-600">make a difference</span>
+            <span className="text-[#ffb3cf]">make a difference</span>
           </>
         }
         lead="Our community projects are growing, and we are looking for kind-hearted volunteers from around the world who would like to join us in helping children, families and local communities in Cambodia."
@@ -123,7 +123,7 @@ export default function VolunteerPage() {
                 "Come and share.",
                 "Come and make a difference.",
               ].map((line) => (
-                <li key={line} className="font-display text-xl text-brand-700">
+                <li key={line} className="font-display text-xl text-[color:var(--band-accent)]">
                   {line}
                 </li>
               ))}

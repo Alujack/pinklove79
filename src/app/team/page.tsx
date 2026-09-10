@@ -45,7 +45,7 @@ function Avatar({ person, size = "lg" }: { person: Person; size?: "lg" | "sm" })
   return (
     <span
       aria-hidden
-      className={`relative grid shrink-0 place-items-center overflow-hidden rounded-full bg-brand-100 font-display text-brand-700 ring-1 ring-brand-200 ${
+      className={`relative grid shrink-0 place-items-center overflow-hidden rounded-full bg-white/15 font-display text-[color:var(--band-accent)] ring-1 ring-white/25 ${
         lg
           ? "h-28 w-28 text-3xl sm:h-32 sm:w-32"
           : "h-16 w-16 text-lg"
@@ -71,7 +71,7 @@ function ContactRows({ person }: { person: Person }) {
   const { whatsapp, phone, email } = person.contact;
   const rows = [
     whatsapp && {
-      icon: "chat",
+      icon: "whatsapp",
       label: "WhatsApp",
       value: whatsapp,
       href: `https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`,
@@ -101,7 +101,7 @@ function ContactRows({ person }: { person: Person }) {
         To reach {person.name.replace(/^Ms\.\s+/, "")}, please{" "}
         <Link
           href="/contact"
-          className="font-bold text-brand-700 underline decoration-brand-300 underline-offset-4 hover:text-brand-800"
+          className="font-bold text-[color:var(--band-accent)] underline decoration-white/45 underline-offset-4 hover:text-white"
         >
           contact our team
         </Link>
@@ -111,19 +111,34 @@ function ContactRows({ person }: { person: Person }) {
   }
 
   return (
-    <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-      {rows.map((row) => (
-        <li key={row.label}>
-          <a
-            href={row.href}
-            className="flex items-center gap-2 font-semibold text-ink-soft transition-colors hover:text-brand-700"
-          >
-            <Icon name={row.icon} className="h-4 w-4 shrink-0 text-brand-500" />
-            <span className="sr-only">{row.label}: </span>
-            {row.value}
-          </a>
-        </li>
-      ))}
+    <ul className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+      {rows.map((row) => {
+        /*
+         * WhatsApp is how nearly everyone here is actually reached, so its
+         * mark is drawn larger than the other rows and in its own green: the
+         * number is recognisable as a WhatsApp number before it is read.
+         */
+        const whatsappRow = row.icon === "whatsapp";
+        return (
+          <li key={row.label}>
+            <a
+              href={row.href}
+              className="flex items-center gap-2.5 font-semibold text-ink-soft transition-colors hover:text-white"
+            >
+              <Icon
+                name={row.icon}
+                className={
+                  whatsappRow
+                    ? "h-7 w-7 shrink-0 text-[#25D366]"
+                    : "h-4 w-4 shrink-0 text-[color:var(--band-accent)]"
+                }
+              />
+              <span className="sr-only">{row.label}: </span>
+              {row.value}
+            </a>
+          </li>
+        );
+      })}
     </ul>
   );
 }
@@ -134,7 +149,7 @@ export default function TeamPage() {
       <PageHero
         title={
           <>
-            Meet our founders <span className="text-brand-600">&amp; team</span>
+            Meet our founders <span className="text-[#ffb3cf]">&amp; team</span>
           </>
         }
         lead="PinkLove79 is the work of people in Cambodia and around the world who share one heart — to care, encourage, and create opportunities for others."
@@ -164,9 +179,9 @@ export default function TeamPage() {
                   <h3 className="font-display text-3xl text-ink">
                     {person.name}
                   </h3>
-                  <p className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm font-bold tracking-wide text-brand-600 uppercase">
+                  <p className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm font-bold tracking-wide text-[color:var(--band-accent)] uppercase">
                     <span>{person.role}</span>
-                    <span aria-hidden className="text-brand-300">
+                    <span aria-hidden className="text-white/45">
                       |
                     </span>
                     <span className="text-ink-soft">
@@ -190,17 +205,17 @@ export default function TeamPage() {
                    * first line of the quote itself.
                    */}
                   {person.quote ? (
-                    <blockquote className="measure mt-7 border-l-2 border-brand-300 pl-5 sm:pl-6">
+                    <blockquote className="measure mt-7 border-l-2 border-white/40 pl-5 sm:pl-6">
                       <p className="font-display text-xl leading-snug text-ink sm:text-2xl">
                         &ldquo;{person.quote}&rdquo;
                       </p>
-                      <footer className="mt-3 text-sm font-bold text-brand-700">
+                      <footer className="mt-3 text-sm font-bold text-[color:var(--band-accent)]">
                         — {person.name}
                       </footer>
                     </blockquote>
                   ) : null}
 
-                  <div className="mt-7 border-t border-brand-100 pt-5">
+                  <div className="mt-7 border-t border-white/15 pt-5">
                     <ContactRows person={person} />
                   </div>
                 </div>
@@ -224,7 +239,7 @@ export default function TeamPage() {
               <h3 className="mt-5 font-display text-2xl text-ink">
                 {person.name}
               </h3>
-              <p className="mt-1.5 text-sm font-semibold text-brand-600">
+              <p className="mt-1.5 text-sm font-semibold text-[color:var(--band-accent)]">
                 {person.role}
               </p>
               <p className="mt-1 text-sm text-ink-soft">
@@ -238,7 +253,7 @@ export default function TeamPage() {
                   <p key={paragraph.slice(0, 40)}>{paragraph}</p>
                 ))}
               </div>
-              <div className="mt-6 border-t border-brand-100 pt-5">
+              <div className="mt-6 border-t border-white/15 pt-5">
                 <ContactRows person={person} />
               </div>
             </Card>

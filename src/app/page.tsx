@@ -57,14 +57,14 @@ export default function HomePage() {
        * moved out of the column into a full-width rule beneath the fold, so
        * the two halves end together.
        */}
-      <div className="glow overflow-hidden border-b border-brand-100">
+      <div className="hero-ground glow overflow-hidden border-b border-white/15">
         <Container className="py-14 sm:py-20 lg:py-24">
           <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
             <div>
               <h1 className="font-display text-[clamp(2.5rem,1.4rem+4vw,4.25rem)] leading-[1.04] text-ink">
                 79 children.
                 <br />
-                <span className="text-brand-600">79 stories.</span>
+                <span className="text-[#ffb3cf]">79 stories.</span>
                 <br />
                 One hope.
               </h1>
@@ -93,21 +93,21 @@ export default function HomePage() {
                   <li key={project.href}>
                     <Link
                       href={project.href}
-                      className="group -mx-2 flex items-center gap-4 rounded-2xl p-2 transition-colors hover:bg-brand-50"
+                      className="group -mx-2 flex items-center gap-4 rounded-2xl p-2 transition-colors hover:bg-white/12"
                     >
                       <Glyph>{project.emoji}</Glyph>
-                      <span className="min-w-0 font-bold text-ink group-hover:text-brand-700">
+                      <span className="min-w-0 font-bold text-ink group-hover:text-white">
                         {project.title}
                       </span>
                       <Icon
                         name="arrow-right"
-                        className="ml-auto h-4 w-4 shrink-0 text-brand-300 transition-all group-hover:translate-x-0.5 group-hover:text-brand-600"
+                        className="ml-auto h-4 w-4 shrink-0 text-white/45 transition-all group-hover:translate-x-0.5 group-hover:text-white"
                       />
                     </Link>
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 grid grid-cols-3 gap-3 border-t border-brand-100 pt-6">
+              <div className="mt-6 grid grid-cols-3 gap-3 border-t border-white/15 pt-6">
                 <Stat value="79" label="Children" />
                 <Stat value="500" label="Villagers" />
                 <Stat value="1" label="Church" />
@@ -120,7 +120,7 @@ export default function HomePage() {
            * the foot of the hero rather than being buried as a fourth
            * paragraph in the left column.
            */}
-          <p className="mt-12 border-t border-brand-200/70 pt-8 text-read text-ink-body sm:mt-16 sm:text-read-lg">
+          <p className="mt-12 border-t border-white/15 pt-8 text-read text-ink-body sm:mt-16 sm:text-read-lg">
             <span className="font-bold text-ink">
               You don&apos;t have to change the whole world to make a
               difference.
@@ -153,7 +153,7 @@ export default function HomePage() {
               </h3>
               {/* The kicker was a second all-caps heading fighting the first;
                   as a quiet single line it supports the title instead. */}
-              <p className="mt-1.5 text-sm font-semibold text-brand-600">
+              <p className="mt-1.5 text-sm font-semibold text-[color:var(--band-accent)]">
                 {project.kicker}
               </p>
               <p className="mt-4 leading-relaxed text-ink-body">
@@ -250,22 +250,22 @@ export default function HomePage() {
 
       {/* ------------------------------------------------------- community -- */}
       <Section>
-        <div className="grid gap-10 rounded-3xl bg-white p-7 ring-1 ring-brand-100 shadow-card sm:p-12 lg:grid-cols-[1fr_18rem] lg:gap-16">
+        <div className="grid gap-10 rounded-3xl bg-[var(--surface)] p-7 ring-1 ring-[color:var(--surface-ring)] shadow-card sm:p-12 lg:grid-cols-[1fr_18rem] lg:gap-16">
           <div>
             <SectionHeading
               emoji="🌱"
               title="Building a better future, together"
               lead="Our hope is that these children and families will not simply receive help today, but will have opportunities to become healthy, educated, confident and independent tomorrow."
             />
-            <p className="mt-6 measure font-display text-2xl leading-snug text-brand-700">
+            <p className="mt-6 measure font-display text-2xl leading-snug text-[color:var(--band-accent)]">
               79 children. 79 stories. One community. One hope for a better
               future.
             </p>
           </div>
           {/* A hairline separates the address from the copy on wide screens
               and stacks cleanly underneath it on narrow ones. */}
-          <div className="border-t border-brand-100 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-12">
-            <p className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-brand-700 uppercase">
+          <div className="border-t border-white/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-12">
+            <p className="flex items-center gap-2 text-xs font-bold tracking-[0.14em] text-[color:var(--band-accent)] uppercase">
               <Icon name="pin" className="h-4 w-4" />
               Find us
             </p>
