@@ -80,7 +80,7 @@ function ContactRows({ person }: { person: Person }) {
       icon: "phone",
       label: "Phone",
       value: phone,
-      href: `tel:${phone}`,
+      href: `tel:${phone.replace(/\s/g, "")}`,
     },
     email && {
       icon: "mail",

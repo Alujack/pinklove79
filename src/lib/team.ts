@@ -50,7 +50,7 @@ export const founders: Person[] = [
     quote:
       "When we care about someone, we can find a way to help — even from far away. Together, our kindness can travel across borders and bring hope where it is needed most.",
     photo: { src: "/team/mei-lan-gee.jpg" },
-    contact: { whatsapp: "", phone: "", email: "" },
+    contact: { whatsapp: "+1 (213) 453-6000" },
   },
   {
     slug: "samnang",
@@ -66,23 +66,23 @@ export const founders: Person[] = [
     quote:
       "I believe we do not need to be rich to help others. We can begin with what we have, and together, small acts of kindness can change lives.",
     photo: { src: "/team/samnang.jpg" },
-    contact: { whatsapp: "", phone: "", email: "" },
+    contact: { whatsapp: "+855 12 304 839" },
   },
 ];
 
 export const team: Person[] = [
   {
-    slug: "yoeun-yan",
-    name: "Yoeun Yan",
+    slug: "yoeurn-yan",
+    name: "Yoeurn Yan",
     role: "Administration & Web Design Specialist",
     country: "Cambodia",
     flag: "🇰🇭",
     bio: [
-      "Yoeun Yan supports PinkLove79 through administration and website development. He helps organize important information, maintain the website, and support the day-to-day administrative work of the organization.",
+      "Yoeurn Yan supports PinkLove79 through administration and website development. He helps organize important information, maintain the website, and support the day-to-day administrative work of the organization.",
       "His work helps PinkLove79 communicate clearly with supporters, volunteers, partners, and people around the world.",
     ],
-    photo: { src: "/team/yoeun-yan.jpg" },
-    contact: { whatsapp: "", phone: "", email: "" },
+    photo: { src: "/team/yoeurn-yan.jpg" },
+    contact: { phone: "+855 71 922 6094" },
   },
   {
     slug: "peap-sreynit",
