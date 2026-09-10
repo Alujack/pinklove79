@@ -82,7 +82,10 @@ export const team: Person[] = [
       "His work helps PinkLove79 communicate clearly with supporters, volunteers, partners, and people around the world.",
     ],
     photo: { src: "/team/yoeurn-yan.jpg" },
-    contact: { phone: "+855 71 922 6094" },
+    contact: {
+      whatsapp: "+855 71 922 6094",
+      phone: "+855 71 922 6094",
+    },
   },
   {
     slug: "peap-sreynit",
