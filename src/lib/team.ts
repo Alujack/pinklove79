@@ -113,6 +113,23 @@ export const team: Person[] = [
   },
 ];
 
+const HONORIFIC = /^(Ms\.|Mr\.|Mrs\.|Dr\.)\s+/i;
+
+/**
+ * Every name on the roster, for the translation opt-out.
+ *
+ * Derived from the people above rather than written out again, so adding
+ * someone protects their name without anyone having to remember to. Each
+ * name is listed both as written and with any honorific stripped, because
+ * the page addresses people by the shorter form mid-sentence.
+ */
+export const personNames: string[] = [...founders, ...team].flatMap(
+  ({ name }) => {
+    const bare = name.replace(HONORIFIC, "");
+    return bare === name ? [name] : [name, bare];
+  },
+);
+
 /** Initials for the fallback avatar, e.g. "Ms. Mei Lan Gee" → "ML". */
 export function initials(name: string) {
   const words = name

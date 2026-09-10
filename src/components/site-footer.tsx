@@ -1,8 +1,10 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { nav, site, whatsappHref } from "@/lib/site";
 import { Container } from "@/components/ui";
 import { Icon, type IconName } from "@/components/icons";
 import { HeartMark } from "@/components/heart-mark";
+import { Brand, withBrand } from "@/components/brand";
 
 const support = [
   { href: "/donate", label: "Make a donation" },
@@ -11,7 +13,7 @@ const support = [
   { href: "/contact", label: "Contact us" },
 ];
 
-function FooterHeading({ children }: { children: string }) {
+function FooterHeading({ children }: { children: ReactNode }) {
   return (
     <h2 className="text-xs font-bold tracking-[0.14em] text-white uppercase">
       {children}
@@ -43,7 +45,7 @@ function ContactRow({
   const body = (
     <>
       <Icon name={icon} className="mt-0.5 h-4 w-4 shrink-0 text-[#ffb3cf]" />
-      <span>{children}</span>
+      <span>{withBrand(children)}</span>
     </>
   );
 
@@ -114,7 +116,9 @@ export function SiteFooter() {
           </nav>
 
           <div>
-            <FooterHeading>PinkLove79 — Cambodia</FooterHeading>
+            <FooterHeading>
+              <Brand /> — Cambodia
+            </FooterHeading>
             <ul className="leading-ui mt-3 space-y-0.5">
               <ContactRow icon="pin">
                 {site.address.lines.join(", ")}
@@ -139,7 +143,8 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-white/15 pt-7 text-base text-ink-soft sm:flex-row sm:items-center sm:justify-between">
           <p className="flex items-center gap-1.5">
-            © {new Date().getFullYear()} {site.name}. Thank you for caring.
+            © {new Date().getFullYear()} <Brand>{site.name}</Brand>. Thank you
+            for caring.
             <Icon name="heart" className="h-3.5 w-3.5 text-[#ffb3cf]" />
           </p>
           <p>One community. One hope for a better future.</p>

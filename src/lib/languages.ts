@@ -14,6 +14,7 @@ export const languages = [
   ["en", "English"],
   ["fr", "Français"],
   ["de", "Deutsch"],
+  ["it", "Italiano"],
   ["zh-CN", "中文"],
   ["ja", "日本語"],
   ["ko", "한국어"],
