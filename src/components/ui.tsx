@@ -146,6 +146,7 @@ export function SectionHeading({
   lead,
   align = "left",
   className,
+  level = 2,
 }: {
   emoji?: string;
   icon?: IconName;
@@ -153,8 +154,16 @@ export function SectionHeading({
   lead?: string;
   align?: "left" | "center";
   className?: string;
+  /**
+   * `1` for a page whose opening section *is* its title — a page with no hero
+   * still needs exactly one `h1`, and promoting the heading it already has
+   * beats bolting a second one on top of it. Purely semantic: the type size
+   * is the same either way.
+   */
+  level?: 1 | 2;
 }) {
   const centered = align === "center";
+  const Title = level === 1 ? "h1" : "h2";
   const mark = emoji ? (
     <Glyph className={cx("mb-5", centered && "mx-auto")}>{emoji}</Glyph>
   ) : icon ? (
@@ -168,9 +177,9 @@ export function SectionHeading({
       className={cx("max-w-2xl", centered && "mx-auto text-center", className)}
     >
       {mark}
-      <h2 className="font-display text-3xl leading-[1.15] text-[color:var(--band-ink)] sm:text-4xl">
+      <Title className="font-display text-3xl leading-[1.15] text-[color:var(--band-ink)] sm:text-4xl">
         {withBrand(title)}
-      </h2>
+      </Title>
       {lead ? (
         <p
           className={cx(
