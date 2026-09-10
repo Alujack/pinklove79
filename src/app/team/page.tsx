@@ -3,11 +3,25 @@ import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { founders, initials, team, type Person } from "@/lib/team";
+import {
+  founders,
+  initials,
+  personNames,
+  team,
+  type Person,
+} from "@/lib/team";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { Icon, type IconName } from "@/components/icons";
 import { Card, Lead, Section, SectionHeading } from "@/components/ui";
+import { BRAND_TERMS, makeProtector } from "@/components/brand";
+
+/*
+ * The Team page is the only place people's names are rendered, so the roster
+ * is folded into the protector here rather than in the shared helper — that
+ * keeps the bios out of every other page's module graph.
+ */
+const withNames = makeProtector([...BRAND_TERMS, ...personNames]);
 
 export const metadata: Metadata = {
   title: "Meet Our Founders & Team",
@@ -98,7 +112,7 @@ function ContactRows({ person }: { person: Person }) {
   if (rows.length === 0) {
     return (
       <p className="text-sm text-ink-soft">
-        To reach {person.name.replace(/^Ms\.\s+/, "")}, please{" "}
+        To reach {withNames(person.name.replace(/^Ms\.\s+/, ""))}, please{" "}
         <Link
           href="/contact"
           className="font-bold text-[color:var(--band-accent)] underline decoration-white/45 underline-offset-4 hover:text-white"
@@ -177,7 +191,7 @@ export default function TeamPage() {
                 <Avatar person={person} />
                 <div className="min-w-0">
                   <h3 className="font-display text-3xl text-ink">
-                    {person.name}
+                    {withNames(person.name)}
                   </h3>
                   <p className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm font-bold tracking-wide text-[color:var(--band-accent)] uppercase">
                     <span>{person.role}</span>
@@ -194,7 +208,7 @@ export default function TeamPage() {
 
                   <div className="measure mt-6 space-y-4 text-read text-ink-body">
                     {person.bio.map((paragraph) => (
-                      <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                      <p key={paragraph.slice(0, 40)}>{withNames(paragraph)}</p>
                     ))}
                   </div>
 
@@ -210,7 +224,7 @@ export default function TeamPage() {
                         &ldquo;{person.quote}&rdquo;
                       </p>
                       <footer className="mt-3 text-sm font-bold text-[color:var(--band-accent)]">
-                        — {person.name}
+                        — {withNames(person.name)}
                       </footer>
                     </blockquote>
                   ) : null}
@@ -237,7 +251,7 @@ export default function TeamPage() {
             <Card key={person.slug} as="article" className="flex flex-col">
               <Avatar person={person} size="sm" />
               <h3 className="mt-5 font-display text-2xl text-ink">
-                {person.name}
+                {withNames(person.name)}
               </h3>
               <p className="mt-1.5 text-sm font-semibold text-[color:var(--band-accent)]">
                 {person.role}
@@ -250,7 +264,7 @@ export default function TeamPage() {
               </p>
               <div className="mt-5 flex-1 space-y-3.5 text-base leading-relaxed text-ink-body">
                 {person.bio.map((paragraph) => (
-                  <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                  <p key={paragraph.slice(0, 40)}>{withNames(paragraph)}</p>
                 ))}
               </div>
               <div className="mt-6 border-t border-white/15 pt-5">

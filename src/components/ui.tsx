@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { Icon, type IconName } from "@/components/icons";
+import { withBrand } from "@/components/brand";
 
 function cx(...parts: Array<string | false | null | undefined>) {
   return parts.filter(Boolean).join(" ");
@@ -168,7 +169,7 @@ export function SectionHeading({
     >
       {mark}
       <h2 className="font-display text-3xl leading-[1.15] text-[color:var(--band-ink)] sm:text-4xl">
-        {title}
+        {withBrand(title)}
       </h2>
       {lead ? (
         <p
@@ -177,7 +178,7 @@ export function SectionHeading({
             centered && "mx-auto",
           )}
         >
-          {lead}
+          {withBrand(lead)}
         </p>
       ) : null}
     </header>

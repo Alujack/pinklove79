@@ -2,6 +2,7 @@ import Link from "next/link";
 import { projects, site } from "@/lib/site";
 import { CtaBand } from "@/components/cta-band";
 import { Icon } from "@/components/icons";
+import { Brand } from "@/components/brand";
 import {
   ArrowLink,
   ButtonLink,
@@ -69,7 +70,7 @@ export default function HomePage() {
                 One hope.
               </h1>
               <p className="mt-7 measure text-read text-ink-body sm:text-read-lg">
-                PinkLove79 walks alongside children, families and a whole
+                <Brand /> walks alongside children, families and a whole
                 village community in Cambodia — with daily meals, education,
                 livelihoods, skills, and a place to belong.
               </p>

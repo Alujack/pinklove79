@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Container } from "@/components/ui";
+import { withBrand } from "@/components/brand";
 
 /**
  * Shared hero for the inner pages.
@@ -29,7 +30,7 @@ export function PageHero({
           {title}
         </h1>
         <p className="mt-6 measure text-read text-ink-body sm:text-read-lg">
-          {lead}
+          {withBrand(lead)}
         </p>
         {actions ? (
           <div className="mt-8 flex flex-wrap gap-3">{actions}</div>

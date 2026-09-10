@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { site, whatsappHref } from "@/lib/site";
 import { PageHero } from "@/components/page-hero";
+import { Brand } from "@/components/brand";
 import { InquiryForm } from "@/components/inquiry-form";
 import { Icon } from "@/components/icons";
 import { Card, Chip, Prose, Section, SectionHeading } from "@/components/ui";
@@ -115,7 +116,7 @@ export default function ContactPage() {
                     Website
                   </dt>
                   <dd className="mt-2 font-semibold text-ink">
-                    {site.websiteLabel}
+                    <Brand>{site.websiteLabel}</Brand>
                   </dd>
                 </div>
               </dl>
